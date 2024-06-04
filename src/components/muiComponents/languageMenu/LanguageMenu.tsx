@@ -6,13 +6,11 @@ import Paper from '@mui/material/Paper'
 import Popper from '@mui/material/Popper'
 import MenuItem from '@mui/material/MenuItem'
 import MenuList from '@mui/material/MenuList'
-import { Caption } from '../../../layouts/TextStyles'
-import Flag from '../../../assets/icons/Flag.svg'
-import flagKz from '../../../assets/img/flag-kz.png'
 import flagRu from '../../../assets/img/flag-ru.png'
-import { lang, setLanguage } from '../../../features/user/userSlice'
-import { useAppDispatch, useAppSelector } from '../../../app/hooks'
-import { Box } from '@mui/system'
+import flagEn from '../../../assets/img/flag-en.png'
+import {lang, setLanguage} from '../../../features/user/userSlice'
+import {useAppDispatch, useAppSelector} from '../../../app/hooks'
+import {Box} from '@mui/system'
 
 export default function LanguageMenu() {
     const dispatch = useAppDispatch()
@@ -61,7 +59,7 @@ export default function LanguageMenu() {
     }, [open])
 
     const ButtonText = () => {
-        if (language === 'kz') {
+        if (language === 'en') {
             return (
                 <Box
                     style={{
@@ -78,14 +76,14 @@ export default function LanguageMenu() {
                         aria-expanded={open ? 'true' : undefined}
                         aria-haspopup="true"
                         onClick={handleToggle}
-                        sx={{ textTransform: 'none' }}
+                        sx={{textTransform: 'none', boxShadow: 'none', color: '#fff'}}
                     >
                         <img
-                            src={flagKz}
+                            src={flagEn}
                             alt="flag"
-                            style={{ marginRight: 8 }}
+                            style={{marginRight: 8, borderRadius: 2}}
                         />
-                        Қазақша
+                        English
                     </Button>
                 </Box>
             )
@@ -107,12 +105,12 @@ export default function LanguageMenu() {
                     aria-expanded={open ? 'true' : undefined}
                     aria-haspopup="true"
                     onClick={handleToggle}
-                    sx={{ textTransform: 'none' }}
+                    sx={{textTransform: 'none', boxShadow: 'none', color: '#fff'}}
                 >
                     <img
                         src={flagRu}
                         alt="flag"
-                        style={{ marginRight: 8 }}
+                        style={{marginRight: 8}}
                     />
                     Русский
                 </Button>
@@ -122,26 +120,9 @@ export default function LanguageMenu() {
 
     return (
         <div>
-            <Box
-                sx={{
-                    display: 'grid',
-                    alignItems: 'center',
-                    gap: 1,
-                    gridTemplateColumns: '30px auto',
-                    justifyContent: 'space-between',
-                    m: '8px 0',
-                    mb: 4,
-                }}
-            >
-                <img
-                    alt="flag"
-                    src={Flag}
-                    style={{ height: 24, width: 24, cursor: 'pointer' }}
-                    onClick={handleToggle}
-                />
 
                 {ButtonText()}
-            </Box>
+
 
             <Popper
                 open={open}
@@ -151,7 +132,7 @@ export default function LanguageMenu() {
                 transition
                 disablePortal
             >
-                {({ TransitionProps, placement }) => (
+                {({TransitionProps, placement}) => (
                     <Grow
                         {...TransitionProps}
                         style={{
@@ -161,7 +142,7 @@ export default function LanguageMenu() {
                                     : 'left bottom',
                         }}
                     >
-                        <Paper sx={{ borderRadius: 2 }}>
+                        <Paper sx={{borderRadius: 2}}>
                             <ClickAwayListener onClickAway={handleClose}>
                                 <MenuList
                                     autoFocusItem={open}
@@ -169,20 +150,20 @@ export default function LanguageMenu() {
                                     aria-labelledby="composition-button"
                                     onKeyDown={handleListKeyDown}
                                 >
-                                    <MenuItem onClick={() => handleClick('kz')}>
+                                    <MenuItem onClick={() => handleClick('en')}>
                                         <img
-                                            src={flagKz}
+                                            src={flagEn}
                                             alt="flag"
-                                            style={{ marginRight: 8 }}
+                                            style={{marginRight: 8, borderRadius: 2}}
                                         />
-                                        Қазақша
+                                        English
                                     </MenuItem>
 
                                     <MenuItem onClick={() => handleClick('ru')}>
                                         <img
                                             src={flagRu}
                                             alt="flag"
-                                            style={{ marginRight: 8 }}
+                                            style={{marginRight: 8}}
                                         />
                                         Русский
                                     </MenuItem>

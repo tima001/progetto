@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
 export const H1 = styled.h1`
-  font-family: Euclid Circular B;
-
   font-style: normal;
   font-weight: 700;
   font-size: 56px;
@@ -16,7 +14,6 @@ export const H1 = styled.h1`
   }
 `;
 export const H2 = styled.h2`
-  font-family: Euclid Circular B;
   font-style: normal;
   font-weight: bold;
   font-size: 48px;
@@ -31,7 +28,6 @@ export const H2 = styled.h2`
 `;
 
 export const Body1 = styled.p`
-  font-family: Euclid Circular B;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -41,7 +37,6 @@ export const Body1 = styled.p`
 `;
 
 export const Body2 = styled.p`
-  font-family: Euclid Circular B;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -56,7 +51,6 @@ export const Body2 = styled.p`
 `;
 
 export const H3 = styled.h3`
-  font-family: "Euclid Circular B";
   font-style: normal;
   font-weight: ${(props) => (props.theme.weight ? props.theme.weight : 700)};
   font-size: 32px;
@@ -66,7 +60,6 @@ export const H3 = styled.h3`
 `;
 
 export const H4 = styled.h4`
-  font-family: Euclid Circular B;
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -75,7 +68,6 @@ export const H4 = styled.h4`
   color: ${(props) => (props.color ? props.color : "#1d1e1c")};
 `;
 export const H5 = styled.h5`
-  font-family: Euclid Circular B;
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -85,7 +77,6 @@ export const H5 = styled.h5`
 `;
 
 export const H6 = styled.h6`
-  font-family: Euclid Circular B;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -95,7 +86,6 @@ export const H6 = styled.h6`
 `;
 
 export const BoldText = styled.p`
-  font-family: Euclid Circular B;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -105,7 +95,6 @@ export const BoldText = styled.p`
 `;
 
 export const Caption = styled.p`
-  font-family: "Euclid Circular B";
   font-style: normal;
   font-weight: 400;
   font-size: ${(props) => (props.size ? props.size : "14px")};

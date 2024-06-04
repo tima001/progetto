@@ -108,7 +108,7 @@ const theme = createTheme({
     },
     typography: {
         fontFamily: [
-            'Euclid Circular B',
+            'Oswald',
             '-apple-system',
             'BlinkMacSystemFont',
             '"Segoe UI"',

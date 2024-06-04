@@ -69,10 +69,9 @@ const Wrapper = styled.div`
 `
 
 const Caption = styled.p`
-    font-family: 'Euclid Circular B';
     font-style: normal;
     font-weight: 400;
-    font-size: '14px';
+    font-size: 14px;
     line-height: 140%;
     margin: 0;
     color: ${(props) => (props.color ? props.color : '#1d1e1c')};

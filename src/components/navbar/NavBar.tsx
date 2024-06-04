@@ -1,37 +1,75 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
-import Logo from '../../assets/icons/Logo.svg'
-import { Link } from 'react-router-dom'
-import { Button } from '@mui/material'
-import Login from '../../pages/Login'
-import { useNavigate } from 'react-router-dom'
+import Logo from '../../assets/img/Logo.png'
+import {Link} from 'react-router-dom'
+import {Button} from '@mui/material'
+import {useNavigate} from 'react-router-dom'
+import Typography from "@mui/material/Typography";
+import {NavBarContentText} from "../../utils/constants";
+import {useIntl} from 'react-intl'
+import LanguageMenu from '../muiComponents/languageMenu/LanguageMenu'
+import { ArrowCircleRight, PencilLine } from "@phosphor-icons/react";
 
 const NavBar = () => {
     const navigate = useNavigate()
+    const {formatMessage} = useIntl()
+
     return (
         <Wrapper>
             <Container>
-                <Link to="/">
-                    <img src={Logo} />
-                </Link>
                 <FlexBox>
-                    <Button
-                        size="large"
-                        variant={'outlined'}
-                        onClick={() => navigate('/login')}
-                    >
-                        Кіру
-                    </Button>
-                    <ButtonRemove>
-                        <Button
-                            size="large"
-                            variant={'contained'}
-                            onClick={() => navigate('/sign-up')}
-                        >
-                            Тіркелу
-                        </Button>
-                    </ButtonRemove>
+                    <Link to="/">
+                        <img height={62} src={Logo} alt={"logo"}/>
+                    </Link>
+                    {NavBarContentText.map(b => {
+                        return (
+                            <Typography
+                                key={b.title}
+                                variant="caption"
+                                component="div"
+                                color="text.secondary"
+                                sx={{
+                                    fontWeight: 300,
+                                    fontSize: '24px',
+                                    color: '#93918D'
+                                }}
+                            >
+                                {formatMessage({id: b.title})}
+                            </Typography>
+                        )
+                    })}
+
                 </FlexBox>
+                <FlexBox>
+                    <FlexBox gap={'24px'}>
+
+                        <LanguageMenu/>
+                        <StyledLine/>
+                    </FlexBox>
+
+
+                    <Button
+                        size="medium"
+                        variant={'contained'}
+                        color={"secondary"}
+                        onClick={() => navigate('/login')}
+                        sx={{color: '#fff'}}
+                    >
+                        <PencilLine size={24} />
+                        Sign up
+                    </Button>
+                    <Button
+                        size="medium"
+                        variant={'contained'}
+                        color={"primary"}
+                        onClick={() => navigate('/login')}
+                        sx={{color: '#000'}}
+                    >
+                        <ArrowCircleRight size={24} />
+                        Sign in
+                    </Button>
+                </FlexBox>
+
             </Container>
         </Wrapper>
     )
@@ -40,42 +78,48 @@ const NavBar = () => {
 export default NavBar
 
 const Wrapper = styled.div`
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    background: white;
-    height: 92px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: #1D1818;
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    @media screen and (max-width: 500px) {
-        display: none;
-    }
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `
 
 const Container = styled.div`
-    max-width: 1340px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    @media (max-width: 1380px) {
-        padding: 0px 20px;
-    }
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  @media (max-width: 1380px) {
+    padding: 0 20px;
+  }
 `
 
-const FlexBox = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
+interface FlexBoxProps {
+    gap?: string;
+}
+
+const FlexBox = styled.div<FlexBoxProps>`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: ${(props) => props.gap || '50px'};
 `
-const ButtonRemove = styled.div`
-    display: block;
-    @media (max-width: 500px) {
-        display: none;
-    }
+const StyledLine = styled.div`
+  height: 36px;
+  width: 2px;
+  border-radius: 10%;
+  background: #93918D;
 `
+

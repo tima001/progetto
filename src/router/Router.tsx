@@ -7,6 +7,8 @@ import NotFound from '../pages/NotFound'
 import ProtectedRoute from '../components/ProtectedRoute'
 import ConfirmMail from '../components/registrationForm/components/ConfirmMail'
 import StudentsPage from '../pages/admin/students/StudentsPage'
+import Education from "../pages/Education/Education";
+import News from "../pages/News/News";
 
 const AppRouter = () => {
     return (
@@ -15,6 +17,14 @@ const AppRouter = () => {
                 <Route
                     path="/"
                     element={<Home />}
+                />
+                <Route
+                    path="/education"
+                    element={<Education />}
+                />
+                <Route
+                    path="/news"
+                    element={<News />}
                 />
                 <Route
                     path="/login"

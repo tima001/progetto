@@ -87,7 +87,6 @@ const theme = createTheme({
                     borderRadius: 6,
                     height: 34,
                     padding: '0 16px',
-                    boxShadow: '4px 4px 0px #000000',
                 },
                 containedPrimary: {
                     ':hover': {

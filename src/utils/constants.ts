@@ -1,5 +1,8 @@
-import { sidebarLink } from '../features/types'
-
+import {sidebarLink} from '../features/types'
+import TGLogo from '../assets/img/landing/tg-logo.png'
+import DewsignAwards from '../assets/img/landing/designAwards.jpeg'
+import GrabientLogo from '../assets/img/landing/GrabientLogo.jpeg'
+import Grabient from '../assets/img/landing/Grabient.png'
 export const Lorum =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nunc maecenas dignissim non ultrices turpis felis. Pulvinar odio in lobortis semper tellus pharetra, aenean odio sed. Tempor, sit risus pretium pretium, eleifend enim. Amet eget sem volutpat tortor mattis ut tincidunt est. Urna volutpat semper morbi neque consectetur aliquet tellus. Egestas id etiam mi lacus in hendrerit scelerisque sed. Enim volutpat sem mattis pretium. Tristique morbi imperdiet vitae volutpat viverra in. Sed at lobortis sagittis, ullamcorper platea dictum curabitur viverra sit.'
 
@@ -13,37 +16,37 @@ export const REACT_APP_STUDENT_COURSE_BASE_URL =
     'https://educon-online-student-course-service.azurewebsites.net/api'
 
 export const ALPHABET = [
-    { id: '1', name: 'A' },
-    { id: '2', name: 'B' },
-    { id: '3', name: 'C' },
-    { id: '4', name: 'D' },
-    { id: '5', name: 'E' },
-    { id: '6', name: 'F' },
-    { id: '7', name: 'G' },
-    { id: '8', name: 'H' },
-    { id: '9', name: 'I' },
-    { id: '10', name: 'J' },
-    { id: '11', name: 'K' },
-    { id: '12', name: 'L' },
-    { id: '13', name: 'M' },
-    { id: '14', name: 'N' },
-    { id: '15', name: 'O' },
-    { id: '16', name: 'P' },
-    { id: '17', name: 'Q' },
-    { id: '18', name: 'R' },
-    { id: '19', name: 'S' },
-    { id: '20', name: 'T' },
-    { id: '21', name: 'U' },
-    { id: '22', name: 'V' },
-    { id: '23', name: 'W' },
-    { id: '24', name: 'X' },
-    { id: '25', name: 'Y' },
-    { id: '26', name: 'Z' },
+    {id: '1', name: 'A'},
+    {id: '2', name: 'B'},
+    {id: '3', name: 'C'},
+    {id: '4', name: 'D'},
+    {id: '5', name: 'E'},
+    {id: '6', name: 'F'},
+    {id: '7', name: 'G'},
+    {id: '8', name: 'H'},
+    {id: '9', name: 'I'},
+    {id: '10', name: 'J'},
+    {id: '11', name: 'K'},
+    {id: '12', name: 'L'},
+    {id: '13', name: 'M'},
+    {id: '14', name: 'N'},
+    {id: '15', name: 'O'},
+    {id: '16', name: 'P'},
+    {id: '17', name: 'Q'},
+    {id: '18', name: 'R'},
+    {id: '19', name: 'S'},
+    {id: '20', name: 'T'},
+    {id: '21', name: 'U'},
+    {id: '22', name: 'V'},
+    {id: '23', name: 'W'},
+    {id: '24', name: 'X'},
+    {id: '25', name: 'Y'},
+    {id: '26', name: 'Z'},
 ]
 
 export const LANGUAGES = [
-    { id: 'KZ', name: 'KZ' },
-    { id: 'RU', name: 'RU' },
+    {id: 'KZ', name: 'KZ'},
+    {id: 'RU', name: 'RU'},
 ]
 
 export const VIDEO = 'VIDEO'
@@ -62,82 +65,82 @@ export const SUPER_ADMIN = 'SUPER_ADMIN'
 
 export const STUDENT = 'STUDENT'
 
-export const sidebarLinks = ({ formatMessage }): sidebarLink[] => [
+export const sidebarLinks = ({formatMessage}): sidebarLink[] => [
     {
         id: 1,
-        title: formatMessage({ id: 'courses' }),
+        title: formatMessage({id: 'courses'}),
         path: '/courses',
         allowedRoles: [SUPER_ADMIN, MODERATOR],
     },
     {
         id: 2,
-        title: formatMessage({ id: 'price' }),
+        title: formatMessage({id: 'price'}),
         path: '/price',
         allowedRoles: [MODERATOR],
     },
     {
         id: 3,
-        title: formatMessage({ id: 'subjects' }),
+        title: formatMessage({id: 'subjects'}),
         path: '/subjects',
         allowedRoles: [SUPER_ADMIN, MODERATOR],
     },
     {
         id: 4,
-        title: formatMessage({ id: 'students' }),
+        title: formatMessage({id: 'students'}),
         path: '/students',
         allowedRoles: [SUPER_ADMIN, MODERATOR],
     },
     {
         id: 5,
-        title: formatMessage({ id: 'allGroups' }),
+        title: formatMessage({id: 'allGroups'}),
         path: '/groups',
         allowedRoles: [SUPER_ADMIN, MODERATOR],
     },
     {
         id: 6,
-        title: formatMessage({ id: 'teachers' }),
+        title: formatMessage({id: 'teachers'}),
         path: '/teachers',
         allowedRoles: [SUPER_ADMIN, MODERATOR],
     },
     {
         id: 7,
-        title: formatMessage({ id: 'managers' }),
+        title: formatMessage({id: 'managers'}),
         path: '/managers',
         allowedRoles: [SUPER_ADMIN, MODERATOR],
     },
     {
         id: 8,
-        title: formatMessage({ id: 'myCourses' }),
+        title: formatMessage({id: 'myCourses'}),
         path: '/my-courses',
         allowedRoles: [STUDENT],
     },
     {
         id: 9,
-        title: formatMessage({ id: 'purchase' }),
+        title: formatMessage({id: 'purchase'}),
         path: '/buy-course',
         allowedRoles: [STUDENT],
     },
     {
         id: 10,
-        title: formatMessage({ id: 'myCourses' }),
+        title: formatMessage({id: 'myCourses'}),
         path: '/teacher-courses',
         allowedRoles: [TEACHER],
     },
     {
         id: 11,
-        title: formatMessage({ id: 'Students' }),
+        title: formatMessage({id: 'Students'}),
         path: '/curator/students',
         allowedRoles: [CURATOR],
     },
     {
         id: 12,
-        title: formatMessage({ id: 'Groups' }),
+        title: formatMessage({id: 'Groups'}),
         path: '/curator/groups',
         allowedRoles: [CURATOR],
     },
     {
         id: 13,
-        title: formatMessage({ id: 'examAnalysis' }),
+        title: formatMessage({id: 'examAnalysis'}),
         path: '/curator/analysis',
         allowedRoles: [CURATOR],
     },
@@ -333,22 +336,22 @@ export const fakeGroups = [
 ]
 
 export const fakeSubjects = [
-    { id: 1, title_kz: 'Оқу сауаттылығы', title_ru: 'Оқу сауаттылығы' },
+    {id: 1, title_kz: 'Оқу сауаттылығы', title_ru: 'Оқу сауаттылығы'},
     {
         id: 2,
         title_kz: 'Математикалық сауаттылық',
         title_ru: 'Математикалық сауаттылық',
     },
-    { id: 3, title_kz: 'Қазақстан тарихы', title_ru: 'Қазақстан тарихы' },
-    { id: 4, title_kz: 'Физика', title_ru: 'Физика' },
-    { id: 5, title_kz: 'Математика', title_ru: 'Математика' },
-    { id: 6, title_kz: 'Ағылшын тілі', title_ru: 'Ағылшын тілі' },
-    { id: 7, title_kz: 'Дүние жүзі тарихы', title_ru: 'Дүние жүзі тарихы' },
-    { id: 8, title_kz: 'География', title_ru: 'География' },
-    { id: 9, title_kz: 'Орыс тілі', title_ru: 'Орыс тілі' },
-    { id: 10, title_kz: 'Химия', title_ru: 'Химия' },
-    { id: 11, title_kz: 'Биология', title_ru: 'Биология' },
-    { id: 12, title_kz: 'Қазақ тілі', title_ru: 'Қазақ тілі' },
+    {id: 3, title_kz: 'Қазақстан тарихы', title_ru: 'Қазақстан тарихы'},
+    {id: 4, title_kz: 'Физика', title_ru: 'Физика'},
+    {id: 5, title_kz: 'Математика', title_ru: 'Математика'},
+    {id: 6, title_kz: 'Ағылшын тілі', title_ru: 'Ағылшын тілі'},
+    {id: 7, title_kz: 'Дүние жүзі тарихы', title_ru: 'Дүние жүзі тарихы'},
+    {id: 8, title_kz: 'География', title_ru: 'География'},
+    {id: 9, title_kz: 'Орыс тілі', title_ru: 'Орыс тілі'},
+    {id: 10, title_kz: 'Химия', title_ru: 'Химия'},
+    {id: 11, title_kz: 'Биология', title_ru: 'Биология'},
+    {id: 12, title_kz: 'Қазақ тілі', title_ru: 'Қазақ тілі'},
 ]
 export const fakeCourses = [
     {
@@ -507,10 +510,10 @@ export const fakeCourses = [
 ]
 
 export const fakeSections = [
-    { id: 1, type: 'video', title: 'Video 1', progress: 100 },
-    { id: 2, type: 'test', title: 'Тақырыптық тест - 1', progress: 70 },
-    { id: 3, type: 'video', title: 'Video 2', progress: 30 },
-    { id: 4, type: 'test', title: 'Тақырыптық тест - 2', progress: 10 },
+    {id: 1, type: 'video', title: 'Video 1', progress: 100},
+    {id: 2, type: 'test', title: 'Тақырыптық тест - 1', progress: 70},
+    {id: 3, type: 'video', title: 'Video 2', progress: 30},
+    {id: 4, type: 'test', title: 'Тақырыптық тест - 2', progress: 10},
 ]
 
 export const fakeGroupSubjects = [
@@ -689,7 +692,7 @@ export const fakeQuestions = [
         id: 3,
         title: 'Это понятие , вводимое в механике для обозначения тела, которое рассматривается как точка, имеющая массу.',
         options: [
-            { id: 1, name: 'Закон Ньютона', isCorrect: false, selected: false },
+            {id: 1, name: 'Закон Ньютона', isCorrect: false, selected: false},
             {
                 id: 2,
                 name: 'Геоцентрически система мира',
@@ -714,7 +717,7 @@ export const fakeQuestions = [
         id: 4,
         title: 'Это понятие , вводимое в механике для обозначения тела, которое рассматривается как точка, имеющая массу.',
         options: [
-            { id: 1, name: 'Закон Ньютона', isCorrect: false, selected: true },
+            {id: 1, name: 'Закон Ньютона', isCorrect: false, selected: true},
             {
                 id: 2,
                 name: 'Геоцентрически система мира',
@@ -738,8 +741,6 @@ export const fakeQuestions = [
 ]
 
 
-
-
 export const NavBarContentText = [
     {
         title: "resources",
@@ -753,4 +754,90 @@ export const NavBarContentText = [
     {
         title: "news",
     },
+]
+export const EducationContent = [
+    {
+        titleRu: null,
+        titleEn: null,
+        descriptionRu: null,
+        descriptionEn: null,
+        content: [
+            {
+                logo: TGLogo,
+                titleRu: "Telegram: Contact @design_awards",
+                titleEn: "Telegram: Contact @design_awards",
+                descriptionRu: "Лучшие Сайты, брендинг и реклама со всего мира. Онлайн события и сервисы для дизайнеров: https://dsgners.ru<br/>Связь: @design_manager_bot",
+                descriptionEn: "The best Websites, branding and advertising from all over the world. Online events and services for designers: https://dsgners.ru<br/>Contact: @design_manager_bot",
+                link: "t.me/design_awards",
+                photo: DewsignAwards,
+            }
+        ]
+    },
+     {
+        titleRu: "Сайты для генерации градиентов",
+        titleEn: null,
+        descriptionRu: "Подборка сайтов для генерации градиентов. Также включили сервисы с готовыми наборами, которые можно отредактировать",
+        descriptionEn: null,
+        content: [
+            {
+                logo: GrabientLogo,
+                titleRu: "Grabient",
+                titleEn: "Grabient",
+                descriptionRu: "Лучшие Сайты, брендинг и реклама со всего мира. Онлайн события и сервисы для дизайнеров: https://dsgners.ru<br/>Связь: @design_manager_bot",
+                descriptionEn: "The best Websites, branding and advertising from all over the world. Online events and services for designers: https://dsgners.ru<br/>Contact: @design_manager_bot",
+                link: "grabient.com",
+                photo: Grabient,
+            },
+            {
+                logo: GrabientLogo,
+                titleRu: "Grabient",
+                titleEn: "Grabient",
+                descriptionRu: "Лучшие Сайты, брендинг и реклама со всего мира. Онлайн события и сервисы для дизайнеров: https://dsgners.ru<br/>Связь: @design_manager_bot",
+                descriptionEn: "The best Websites, branding and advertising from all over the world. Online events and services for designers: https://dsgners.ru<br/>Contact: @design_manager_bot",
+                link: "grabient.com",
+                photo: Grabient,
+            },
+            {
+                logo: GrabientLogo,
+                titleRu: "Grabient",
+                titleEn: "Grabient",
+                descriptionRu: "Лучшие Сайты, брендинг и реклама со всего мира. Онлайн события и сервисы для дизайнеров: https://dsgners.ru<br/>Связь: @design_manager_bot",
+                descriptionEn: "The best Websites, branding and advertising from all over the world. Online events and services for designers: https://dsgners.ru<br/>Contact: @design_manager_bot",
+                link: "grabient.com",
+                photo: Grabient,
+            },
+
+        ]
+    },
+
+]
+export const FooterText = [
+    {
+        title: "About us (Impressum)",
+    },
+    {
+        title: "Membership login",
+    },
+    {
+        title: "Advertise",
+    },
+    {
+        title: "Privacy policy",
+    },
+    {
+        title: "Write for us",
+    },
+    {
+        title: "Contact us",
+    },
+    {
+        title: "Instagram",
+    },
+    {
+        title: "Facebook",
+    },
+    {
+        title: "Telegram",
+    },
+
 ]

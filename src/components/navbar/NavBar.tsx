@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState} from 'react'
 import styled from '@emotion/styled'
 import Logo from '../../assets/img/Logo.png'
 import {Link} from 'react-router-dom'
@@ -13,6 +13,14 @@ import { ArrowCircleRight, PencilLine } from "@phosphor-icons/react";
 const NavBar = () => {
     const navigate = useNavigate()
     const {formatMessage} = useIntl()
+    const [selectedNavItem, setSelectedNavItem] = useState(null);
+
+    const handleNavClick = (title) => {
+        setSelectedNavItem(title);
+        navigate(`/${title}`);
+    };
+
+
 
     return (
         <Wrapper>
@@ -21,23 +29,27 @@ const NavBar = () => {
                     <Link to="/">
                         <img height={62} src={Logo} alt={"logo"}/>
                     </Link>
-                    {NavBarContentText.map(b => {
+                    {NavBarContentText.map((b,index) => {
                         return (
                             <Typography
-                                key={b.title}
+                                key={index}
                                 variant="caption"
                                 component="div"
                                 color="text.secondary"
+                                onClick={() => handleNavClick(b.title)}
                                 sx={{
                                     fontWeight: 300,
                                     fontSize: '24px',
-                                    color: '#93918D'
+                                    color: '#93918D',
+                                    cursor: 'pointer',
+                                    borderBottom: selectedNavItem === b.title ? '2px solid #23854A' : 'none'
                                 }}
                             >
-                                {formatMessage({id: b.title})}
+                                {formatMessage({ id: b.title })}
                             </Typography>
                         )
                     })}
+
 
                 </FlexBox>
                 <FlexBox>

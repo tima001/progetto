@@ -4,8 +4,12 @@ import styled from "@emotion/styled";
 import BannerBgEn from '../../assets/img/landing/banner-bg-en.png'
 import BannerBgRu from '../../assets/img/landing/banner-bg-ru.png'
 import {useIntl} from 'react-intl';
-import AnnouncementContent from './components/AnnouncementContent';
-import BannerAdvertisement from './components/BannerAdvertisement';
+import BannerAdvertisement from './mainPage/BannerAdvertisement';
+import WhyUs from "./mainPage/WhyUs/WhyUs";
+import FreeResources from "./mainPage/FreeResources/FreeResources";
+import FreeWorks from "./mainPage/FreeWorks/FreeWorks";
+import ContactUs from "./mainPage/ContactUs/ContactUs";
+import Footer from "../../components/footer";
 
 const Home = () => {
     const {locale} = useIntl()
@@ -20,8 +24,12 @@ const Home = () => {
                         <BannerImg src={BannerBgRu}/>
                 }
                 <BannerAdvertisement/>
-                <AnnouncementContent/>
+                <WhyUs/>
+                <FreeResources/>
+                <FreeWorks/>
+                <ContactUs/>
             </Main>
+            <Footer/>
         </Wrapper>
     )
 }
@@ -36,7 +44,7 @@ const Main = styled.main`
 `
 
 const Wrapper = styled.div`
-  background-color: #fff;
+  background-color: #1C1C1C;
   min-height: 100vh;
   height: 100%;
 `

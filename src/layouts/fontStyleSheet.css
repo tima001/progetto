@@ -1,8 +1,27 @@
 /* Euclid Circular B - font */
+
+@font-face {
+  font-family: "Oswald";
+  src: url("../assets/fonts/Oswald-ExtraLight.ttf");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Oswald";
+  src: url("../assets/fonts/Oswald-Light.ttf");
+  font-weight: 300;
+  font-style: normal;
+}
 @font-face {
   font-family: "Oswald";
   src: url("../assets/fonts/Oswald-Regular.ttf");
   font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Oswald";
+  src: url("../assets/fonts/Oswald-Medium.ttf");
+  font-weight: 500;
   font-style: normal;
 }
 @font-face {
@@ -14,27 +33,7 @@
 
 @font-face {
   font-family: "Oswald";
-  src: url("../assets/fonts/Oswald-Medium.ttf");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Oswald";
-  src: url("../assets/fonts/Oswald-Light.ttf");
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Oswald";
-  src: url("../assets/fonts/Oswald-ExtraLight.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Oswald";
   src: url("../assets/fonts/Oswald-Bold.ttf");
-  font-weight: bold;
+  font-weight: 700;
   font-style: normal;
 }

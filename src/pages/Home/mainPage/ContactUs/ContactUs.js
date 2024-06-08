@@ -7,6 +7,7 @@ import contactUs from '../../../../assets/img/landing/contactUs.png'
 import {Button} from "@mui/material";
 
 const ContactUs = () => {
+    const { formatMessage } = useIntl()
     return (
         <IntroWrapper id="aboutWineInvesting">
             <FlexBox>
@@ -23,9 +24,11 @@ const ContactUs = () => {
                         }}
                     >
                         <StyledSpan>
-                            Присоединяйтесь {" "}
+                        {formatMessage({ id: 'Join' })}
+                            {" "}
                         </StyledSpan>
-                        к нам и станьте частью нашей дизайн-семьи
+                        {formatMessage({ id: 'JoinInfo' })}
+                        
                     </Typography>
                     <Typography
                         variant="h1"
@@ -37,16 +40,17 @@ const ContactUs = () => {
                             color: '#FFFFFF',
                         }}
                     >
-                        Присоединяйтесь к нам и создайте вместе с нами дизайн-комьюнити в Казахстане, где творчество
-                        здорово и где возможности безграничны. Давайте вдохновлять друг друга и строить будущее дизайна
-                        вместе.
+                        {formatMessage({ id: 'JoinContent' })}
+                        
                     </Typography>
                 </Box>
                 <StyledBox>
                     <StyledImg src={contactUs}/>
                 </StyledBox>
             </FlexBox>
-<StyledButton>ПРИСОЕДИНИТЬСЯ К НАМ </StyledButton>
+<StyledButton>
+{formatMessage({ id: 'JoinButton' })}
+    </StyledButton>
         </IntroWrapper>
     )
 }

@@ -6,6 +6,7 @@ import {FooterText} from "../../utils/constants";
 import {useIntl} from 'react-intl'
 
 const Footer = () => {
+    const { formatMessage } = useIntl()
 
     return (
         <>
@@ -50,7 +51,8 @@ const Footer = () => {
                     textAlign: 'center'
                 }}
             >
-            CREATED BY GROUP IT1CCO-2113
+                {formatMessage({ id: 'Creatersinfo' })}
+                        
             </Typography>
         </StyledBox>
         </>

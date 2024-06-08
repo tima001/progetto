@@ -1,3 +1,4 @@
+import React from 'react'
 import { toast } from 'react-toastify'
 import { useIntl } from 'react-intl'
 
@@ -96,20 +97,20 @@ export const removeDuplicateNumbers = (arr: Array<number>) => {
     return arr.filter((item, index) => arr.indexOf(item) === index)
 }
 
-export const showErrors = (error) => {
-    const { formatMessage } = useIntl()
+// export const showErrors = (error) => {
+//     const { formatMessage } = useIntl()
 
-    return error?.response?.data?.errors?.forEach((err) => {
-        toast.error(
-            err.code
-                ? formatMessage({
-                      id: err.code,
-                      defaultMessage: err?.message,
-                  })
-                : err.message,
-        )
-    })
-}
+//     return error?.response?.data?.errors?.forEach((err) => {
+//         toast.error(
+//             err.code
+//                 ? formatMessage({
+//                       id: err.code,
+//                       defaultMessage: err?.message,
+//                   })
+//                 : err.message,
+//         )
+//     })
+// }
 
 export const convertToMobile = (mobile: string) => {
     const mobileNumbers = mobile.replace(/\D/g, '').substring(1)

@@ -18,6 +18,7 @@ import image7 from '../../../../assets/img/landing/resourseImage7.jpeg';
 import {Button} from "@mui/material";
 
 const FreeWorks = () => {
+  const { formatMessage } = useIntl()
 
     const images = [
         {src: image1, index: 1, alt: "Resource 1"},
@@ -87,7 +88,8 @@ const FreeWorks = () => {
                             textAlign: 'center'
                         }}
                     >
-                        Более 1000+ работ для вдохновния
+                      {formatMessage({ id: '1000Works' })}
+                        
                     </Typography>
                     <Typography
                         variant="h1"
@@ -101,7 +103,8 @@ const FreeWorks = () => {
                             mb:5
                         }}
                     >
-                        У нас представлено много работ, которые могут послужить вашим источником вдохновения. Разнообразие и качество наших проектов обеспечат вам идеи и креативные решения, чтобы вы могли продолжать свой дизайнерский путь с нами
+                      {formatMessage({ id: '1000WorksInfo' })}
+                        
                     </Typography>
                 </Box>
 
@@ -116,7 +119,8 @@ const FreeWorks = () => {
             </FlexBox>
         </IntroWrapper>
     <CustomButton>
-        Show more
+    {formatMessage({ id: 'ShowMore' })}
+       
     </CustomButton>
             </>
     );

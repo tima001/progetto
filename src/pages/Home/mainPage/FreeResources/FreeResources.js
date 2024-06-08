@@ -18,6 +18,7 @@ import image7 from '../../../../assets/img/landing/resourseImage7.jpeg';
 import {Button} from "@mui/material";
 
 const FreeResources = () => {
+  const { formatMessage } = useIntl()
 
     const images = [
         {src: image1, index: 1, alt: "Resource 1"},
@@ -87,7 +88,7 @@ const FreeResources = () => {
                             textAlign: 'center'
                         }}
                     >
-                        Более 1000+ бесплатных ресурсов
+                        {formatMessage({ id: '1000Resources' })}
                     </Typography>
                     <Typography
                         variant="h1"
@@ -101,9 +102,8 @@ const FreeResources = () => {
                             mb:5
                         }}
                     >
-                        На нашем сайте вы обнаружите обширный ассортимент бесплатных ресурсов, предназначенных для
-                        воплощения ваших проектов в реальность. Наша цель - предоставить вам легкий доступ к
-                        высококачественным инструментам и материалам.
+                       {formatMessage({ id: '1000ResourcesInfo' })}
+                        
                     </Typography>
                 </Box>
 
@@ -118,7 +118,7 @@ const FreeResources = () => {
             </FlexBox>
         </IntroWrapper>
             <CustomButton>
-                Show more
+              {formatMessage({ id: 'ShowMore' })}
             </CustomButton>
             </>
     );

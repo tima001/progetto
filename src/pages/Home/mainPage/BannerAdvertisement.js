@@ -9,15 +9,15 @@ const BannerAdvertisement = () => {
     return (
         <Wrapper>
 
-        <Typography
-            variant="h5"
-            component="div"
-            color="text.secondary"
-            sx={{
-                fontWeight: 400,
-                fontSize: '54px',
-                color: '#FFF',
-                textAlign: 'center',
+            <Typography
+                variant="h5"
+                component="div"
+                color="text.secondary"
+                sx={{
+                    fontWeight: 400,
+                    fontSize: '54px',
+                    color: '#FFF',
+                    textAlign: 'center',
                 mb: 4
             }}
         >

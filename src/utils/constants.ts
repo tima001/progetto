@@ -3,6 +3,21 @@ import TGLogo from '../assets/img/landing/tg-logo.png'
 import DewsignAwards from '../assets/img/landing/designAwards.jpeg'
 import GrabientLogo from '../assets/img/landing/GrabientLogo.jpeg'
 import Grabient from '../assets/img/landing/Grabient.png'
+import NewsBgImg1 from '../assets/img/landing/news-bg-1.png'
+import NewsBgImg2 from '../assets/img/landing/news-bg-2.png'
+import NewsBgImg3 from '../assets/img/landing/news-bg-3.png'
+import NewsBgImg4 from '../assets/img/landing/news-bg-4.png'
+import BestWork1 from '../assets/img/landing/best-work1.jpeg'
+import BestWork2 from '../assets/img/landing/best-work2.jpeg'
+import BestWork3 from '../assets/img/landing/best-work3.jpeg'
+import BestWork4 from '../assets/img/landing/best-work4.jpeg'
+import BestWork5 from '../assets/img/landing/best-work5.jpeg'
+import Work1 from '../assets/img/landing/works-content1.png'
+import Work2 from '../assets/img/landing/works-content2.jpeg'
+import Work3 from '../assets/img/landing/works-content3.jpeg'
+import Work4 from '../assets/img/landing/works-content4.jpeg'
+import Work5 from '../assets/img/landing/works-content5.jpeg'
+import Work6 from '../assets/img/landing/works-content6.jpeg'
 export const Lorum =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nunc maecenas dignissim non ultrices turpis felis. Pulvinar odio in lobortis semper tellus pharetra, aenean odio sed. Tempor, sit risus pretium pretium, eleifend enim. Amet eget sem volutpat tortor mattis ut tincidunt est. Urna volutpat semper morbi neque consectetur aliquet tellus. Egestas id etiam mi lacus in hendrerit scelerisque sed. Enim volutpat sem mattis pretium. Tristique morbi imperdiet vitae volutpat viverra in. Sed at lobortis sagittis, ullamcorper platea dictum curabitur viverra sit.'
 
@@ -808,6 +823,119 @@ export const EducationContent = [
             },
 
         ]
+    },
+
+]
+
+export const NewsContent = [
+    {
+        img: NewsBgImg1,
+        title: 'Walsh: Оживление бренда Talagent Financial с глубоким смыслом',
+        content: 'Агентство &Walsh из Нью-Йорка преобразило Talagent Financial, придали не только визуальное обновление, но и заложили сильную концепцию в новую айдентику.\n' +
+            'Talagent Financial — передовая технологическая платформа для финансовых советников. &Walsh переосмыслили ее бренд с нуля, включая имя, стратегию, визуальный стиль, 3D-элементы, дизайн платформы и сайта.\n' +
+            '\n' +
+            'Ключевой момент — новая концепция бренда: риск необходимо не избегать, а принимать. «Риск окружает нас; он — ткань жизни». В пост-Covid-19 эпоху, где мы привыкли минимизировать риски, этот подход кажется особенно актуальным.\n' +
+            'Изначальное название Talagent сочетало в себе «Талисман» и «Интеллект», но оказалось слишком замысловатым. &Walsh провели стратегический процесс выбора нового, более выразительного и неожиданного имени, отражающего суть бренда вокруг риска — «Fabric».\n' +
+            '\n' +
+            'Важным элементом стало 3D-оформление. Хромированная текстура придает ощущение ткани будущего, визуально вплетая риск в стратегии управления капиталом.\n' +
+            'С этим обновлением запускается новая веб-платформа Fabric, решившая сложную задачу организации данных для более точного управления клиентами с помощью уникальных инсайтов, предоставляемых технологией Fabric.'
+    },
+    {
+        img: NewsBgImg2,
+        title: 'Walsh: Оживление бренда Talagent Financial с глубоким смыслом',
+        content: 'Агентство &Walsh из Нью-Йорка преобразило Talagent Financial, придали не только визуальное обновление, но и заложили сильную концепцию в новую айдентику.\n' +
+            'Talagent Financial — передовая технологическая платформа для финансовых советников. &Walsh переосмыслили ее бренд с нуля, включая имя, стратегию, визуальный стиль, 3D-элементы, дизайн платформы и сайта.\n' +
+            '\n' +
+            'Ключевой момент — новая концепция бренда: риск необходимо не избегать, а принимать. «Риск окружает нас; он — ткань жизни». В пост-Covid-19 эпоху, где мы привыкли минимизировать риски, этот подход кажется особенно актуальным.\n' +
+            'Изначальное название Talagent сочетало в себе «Талисман» и «Интеллект», но оказалось слишком замысловатым. &Walsh провели стратегический процесс выбора нового, более выразительного и неожиданного имени, отражающего суть бренда вокруг риска — «Fabric».\n' +
+            '\n' +
+            'Важным элементом стало 3D-оформление. Хромированная текстура придает ощущение ткани будущего, визуально вплетая риск в стратегии управления капиталом.\n' +
+            'С этим обновлением запускается новая веб-платформа Fabric, решившая сложную задачу организации данных для более точного управления клиентами с помощью уникальных инсайтов, предоставляемых технологией Fabric.'
+    },
+    {
+        img: NewsBgImg3,
+        title: 'Walsh: Оживление бренда Talagent Financial с глубоким смыслом',
+        content: 'Агентство &Walsh из Нью-Йорка преобразило Talagent Financial, придали не только визуальное обновление, но и заложили сильную концепцию в новую айдентику.\n' +
+            'Talagent Financial — передовая технологическая платформа для финансовых советников. &Walsh переосмыслили ее бренд с нуля, включая имя, стратегию, визуальный стиль, 3D-элементы, дизайн платформы и сайта.\n' +
+            '\n' +
+            'Ключевой момент — новая концепция бренда: риск необходимо не избегать, а принимать. «Риск окружает нас; он — ткань жизни». В пост-Covid-19 эпоху, где мы привыкли минимизировать риски, этот подход кажется особенно актуальным.\n' +
+            'Изначальное название Talagent сочетало в себе «Талисман» и «Интеллект», но оказалось слишком замысловатым. &Walsh провели стратегический процесс выбора нового, более выразительного и неожиданного имени, отражающего суть бренда вокруг риска — «Fabric».\n' +
+            '\n' +
+            'Важным элементом стало 3D-оформление. Хромированная текстура придает ощущение ткани будущего, визуально вплетая риск в стратегии управления капиталом.\n' +
+            'С этим обновлением запускается новая веб-платформа Fabric, решившая сложную задачу организации данных для более точного управления клиентами с помощью уникальных инсайтов, предоставляемых технологией Fabric.'
+    },
+    {
+        img: NewsBgImg4,
+        title: 'Далбан',
+        content: 'Агентство &Walsh из Нью-Йорка преобразило Talagent Financial, придали не только визуальное обновление, но и заложили сильную концепцию в новую айдентику.\n' +
+            'Talagent Financial — передовая технологическая платформа для финансовых советников. &Walsh переосмыслили ее бренд с нуля, включая имя, стратегию, визуальный стиль, 3D-элементы, дизайн платформы и сайта.\n' +
+            '\n' +
+            'Ключевой момент — новая концепция бренда: риск необходимо не избегать, а принимать. «Риск окружает нас; он — ткань жизни». В пост-Covid-19 эпоху, где мы привыкли минимизировать риски, этот подход кажется особенно актуальным.\n' +
+            'Изначальное название Talagent сочетало в себе «Талисман» и «Интеллект», но оказалось слишком замысловатым. &Walsh провели стратегический процесс выбора нового, более выразительного и неожиданного имени, отражающего суть бренда вокруг риска — «Fabric».\n' +
+            '\n' +
+            'Важным элементом стало 3D-оформление. Хромированная текстура придает ощущение ткани будущего, визуально вплетая риск в стратегии управления капиталом.\n' +
+            'С этим обновлением запускается новая веб-платформа Fabric, решившая сложную задачу организации данных для более точного управления клиентами с помощью уникальных инсайтов, предоставляемых технологией Fabric.'
+    }
+]
+
+export const BestWorks = [
+    {
+        id:1,
+        name: "Aziz Zhussipov",
+        img: BestWork1
+    },
+    {
+        id:2,
+        name: "Aziz Zhussipov",
+        img: BestWork2
+    },
+    {
+        id:3,
+        name: "Aziz Zhussipov",
+        img: BestWork3
+    },
+    {
+        id:4,
+        name: "Aziz Zhussipov",
+        img: BestWork4
+    },
+    {
+        id:5,
+        name: "Aziz Zhussipov",
+        img: BestWork5
+    },
+
+]
+export const WorksContent = [
+    {
+        id:1,
+        name: "Old brick wall",
+        img: Work1
+    },
+    {
+        id:2,
+        name: "Old brick wall",
+        img: Work2
+    },
+    {
+        id:3,
+        name: "Old brick wall",
+        img: Work3
+    },
+    {
+        id:4,
+        name: "Old brick wall",
+        img: Work4
+    },
+    {
+        id:5,
+        name: "Old brick wall",
+        img: Work5
+    },
+    {
+        id:5,
+        name: "Old brick wall",
+        img: Work6
     },
 
 ]

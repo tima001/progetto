@@ -3,7 +3,9 @@ import Navbar from '../../components/navbar'
 import styled from "@emotion/styled";
 import BannerBgEn from '../../assets/img/landing/banner-bg-en.png'
 import BannerBgRu from '../../assets/img/landing/banner-bg-ru.png'
-import {useIntl} from 'react-intl';
+import {useIntl} from 'react-intl'
+
+
 import BannerAdvertisement from './mainPage/BannerAdvertisement';
 import WhyUs from "./mainPage/WhyUs/WhyUs";
 import FreeResources from "./mainPage/FreeResources/FreeResources";

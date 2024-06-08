@@ -69,6 +69,7 @@ const Home = () => {
                                     }}
                                 >
                                     {row[`title${capitalize(locale)}`]}
+
                                 </Typography>
                                 <Typography
                                     variant="h1"
@@ -89,7 +90,7 @@ const Home = () => {
                                             <StyledCard key={index}>
                                                 <FlexBox direction="column" justify="space-between" padding="24px">
                                                     <FlexBox gap="24px">
-                                                        <img src={b.logo} width={60} height={60}
+                                                        <img alt="logo" src={b.logo} width={60} height={60}
                                                              style={{borderRadius: '50%'}}/>
                                                         <Typography
                                                             variant="h1"

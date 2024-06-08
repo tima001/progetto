@@ -1,34 +1,31 @@
-import React from 'react'
-import Navbar from '../../components/navbar'
+import React from 'react';
+import Navbar from '../../components/navbar';
 import styled from "@emotion/styled";
 import {useIntl} from 'react-intl';
 import Footer from "../../components/footer";
 import BannerBgEn from "../../assets/img/landing/banner-bg-news-en.png";
 import BannerBgRu from "../../assets/img/landing/banner-bg-news-ru.png";
 import {Box} from "@mui/system";
+import Typography from "@mui/material/Typography";
+import {BestWorks, NewsContent} from "../../utils/constants";
 import {ToggleButton, ToggleButtonGroup} from "@mui/material";
 
 const News = () => {
-    const {locale} = useIntl()
+    const {locale} = useIntl();
     const [alignment, setAlignment] = React.useState('web');
 
     const handleChange = (event, newAlignment,) => {
         setAlignment(newAlignment);
     };
 
-    const CustomToggleButton = styled(ToggleButton)(({theme}) => ({
-
+    const CustomToggleButton = styled(ToggleButton)(() => ({
         '&.Mui-selected, &.Mui-selected:hover': {
             backgroundColor: '#23854A',
             color: 'white',
         },
         '&.MuiToggleButton-root': {
             background: '#D9D9D9',
-            // margin: '4px',
-            height: '32px',
             border: 'none',
-
-
             '&.Mui-selected': {
                 backgroundColor: '#23854A',
                 color: 'white',
@@ -37,6 +34,13 @@ const News = () => {
         },
     }));
 
+    const getClippedContent = (content) => {
+        const words = content.split(' ');
+        if (words.length > 15) {
+            return words.slice(0, 15).join(' ') + '...';
+        }
+        return content;
+    };
 
     return (
         <Wrapper>
@@ -48,25 +52,166 @@ const News = () => {
                         :
                         <BannerImg src={BannerBgRu}/>
                 }
-                <GridBox>
+                <GridBox firstPadding={24} secondPadding={48}>
+                    <Box sx={{justifySelf: 'end'}}>
+
+                        <ToggleButtonGroup
+                            color="primary"
+                            value={alignment}
+                            exclusive
+                            onChange={handleChange}
+                            aria-label="Platform"
+                            sx={{background: '#D9D9D9', height: '40px', p: '4px', borderRadius: '10px'}}
+                        >
+                            <CustomToggleButton value="web">Все</CustomToggleButton>
+                            <CustomToggleButton value="android">Новый</CustomToggleButton>
+                        </ToggleButtonGroup>
+                    </Box>
+
+                    <Typography
+                        variant="h5"
+                        component="div"
+                        color="text.secondary"
+                        sx={{
+                            fontWeight: 400,
+                            fontSize: '24px',
+                            color: '#FFF',
+                            textAlign: 'center',
+                            background: 'rgba(35, 133, 74, 1)',
+                            borderRadius: '10px',
+                            padding: '4px',
+                        }}
+                    >
+                        Лучшие работы за этот месяц
+                    </Typography>
+                </GridBox>
+                <GridBox firstPadding={24} secondPadding={48}>
                     <Box>
-                        <Box sx={{background: '#D9D9D9', width: 'min-content', borderRadius: '8px'}}>
-                            <ToggleButtonGroup
-                                color="primary"
-                                value={alignment}
-                                exclusive
-                                onChange={handleChange}
-                                aria-label="Platform"
-                            >
-                                <CustomToggleButton value="web">Web</CustomToggleButton>
-                                <CustomToggleButton value="android">Android</CustomToggleButton>
-                                <CustomToggleButton value="ios">iOS</CustomToggleButton>
-                            </ToggleButtonGroup>
-                        </Box>
+                        {NewsContent.map((b, index) => {
+                            return (
+                                <StyledBox key={index} src={b.img} height={700}>
+
+                                    <NewsContentWrapper className="contentWrapper">
+                                        <Box sx={{padding: '20px'}}>
+
+                                            <Typography
+                                                key={index}
+                                                variant="caption"
+                                                component="div"
+                                                color="text.secondary"
+                                                sx={{
+                                                    fontWeight: 500,
+                                                    fontSize: '28px',
+                                                    color: '#FFF',
+                                                }}
+                                            >
+                                                {b.title}
+                                            </Typography>
+                                            <Typography
+                                                key={index}
+                                                variant="caption"
+                                                component="div"
+                                                color="text.secondary"
+                                                sx={{
+                                                    fontWeight: 300,
+                                                    fontSize: '20px',
+                                                    color: '#FFF',
+                                                }}
+                                            >
+                                                {getClippedContent(b.content)}
+                                            </Typography>
+                                        </Box>
+
+                                    </NewsContentWrapper>
+
+                                    <NewsContentWrapper className="fullContentWrapper">
+                                        <Box sx={{padding: '20px'}}>
+
+                                            <Typography
+                                                key={index}
+                                                variant="caption"
+                                                component="div"
+                                                color="text.secondary"
+                                                sx={{
+                                                    fontWeight: 500,
+                                                    fontSize: '28px',
+                                                    color: '#FFF',
+                                                }}
+                                            >
+                                                {b.title}
+                                            </Typography>
+                                            <Typography
+                                                key={index}
+                                                variant="caption"
+                                                component="div"
+                                                color="text.secondary"
+                                                sx={{
+                                                    fontWeight: 300,
+                                                    fontSize: '20px',
+                                                    color: '#FFF',
+                                                }}
+                                            >
+                                                {b.content}
+                                            </Typography>
+                                        </Box>
+
+                                    </NewsContentWrapper>
+
+                                </StyledBox>
+                            )
+                        })}
+                    </Box>
+                    <Box>
+                        {BestWorks.map((b, index) => {
+                            return (
+                                    <StyledBox key={index} src={b.img} height={330}>
+
+                                        <NewsContentWrapper className="contentWrapper">
+                                            <Box sx={{padding: '20px'}}>
+
+                                                <Typography
+                                                    key={index}
+                                                    variant="caption"
+                                                    component="div"
+                                                    color="text.secondary"
+                                                    sx={{
+                                                        fontWeight: 500,
+                                                        fontSize: '28px',
+                                                        color: '#FFF',
+                                                    }}
+                                                >
+                                                    {b.name}
+                                                </Typography>
+                                            </Box>
+
+                                        </NewsContentWrapper>
+
+                                        <NewsContentWrapper className="fullContentWrapper">
+                                            <Box sx={{padding: '20px'}}>
+
+                                                <Typography
+                                                    key={index}
+                                                    variant="caption"
+                                                    component="div"
+                                                    color="text.secondary"
+                                                    sx={{
+                                                        fontWeight: 500,
+                                                        fontSize: '28px',
+                                                        color: '#FFF',
+                                                    }}
+                                                >
+                                                    {b.name}
+                                                </Typography>
+                                            </Box>
+
+                                        </NewsContentWrapper>
+
+                                    </StyledBox>
+                            )
+                        })}
 
 
                     </Box>
-                    <Box sx={{background: '#ffffff', height: 120}}/>
                 </GridBox>
             </Main>
             <Footer/>
@@ -74,54 +219,77 @@ const News = () => {
     )
 }
 
-
-export default News
+export default News;
 
 const Main = styled.main`
   height: 100%;
   justify-content: center;
   align-items: center;
-`
+`;
 
 const Wrapper = styled.div`
   background-color: #1C1C1C;
   min-height: 100vh;
   height: 100%;
-`
+`;
+
 const BannerImg = styled.img`
-  background-image: ${(props) => `url(${props.src})`};
   object-fit: contain;
   width: 100%;
   background: no-repeat;
-`
+`;
+
 const GridBox = styled.div`
   display: grid;
-  grid-template-columns: 2.5fr 1.5fr;
-`
+  grid-template-columns: 3fr 1fr;
+  padding: ${(props) => `${props.firstPadding}px ${props.secondPadding}px`};
+  gap: 24px;
+`;
 
-const StyledCard = styled.div`
+const StyledBox = styled.div`
+  background-image: ${(props) => `url(${props.src})`};
+  height: ${(props) => `${props.height}px`};
+  
+  background-size: cover;
+  border-radius: 32px;
+  align-items: end;
   display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  background: #fff;
-  border-radius: 22px;
-  border-bottom: 12px solid #23854A;
   overflow: hidden;
-  margin-bottom: 24px;
-`
+  position: relative;
+  margin-bottom: 36px;
+  border: 2px solid #FFF;
+
+  &:hover .contentWrapper {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    visibility: hidden;
+  }
+
+  &:hover .fullContentWrapper {
+    opacity: 1;
+    transition: opacity 1s ease-out;
+    visibility: visible;
+    height: 100%;
+  }
+`;
 
 
-const FlexBox = styled.div`
-  display: flex;
-  flex-direction: ${(props) => props.direction || 'row'};
-  gap: ${(props) => props.gap || '8px'};
-  align-items: ${(props) => props.align || 'left'};
-  justify-content: ${(props) => props.justify || 'left'};
-  padding: ${(props) => props.padding || '0'};
-`
 
-const StyledImg = styled.img`
-  min-width: 400px;
-  height: 300px;
-  object-fit: cover;
-`
+const NewsContentWrapper = styled.div`
+  background: rgba(0, 0, 0, 0.83);
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+  //transition: opacity 0.5s ease-in;
+
+  &.fullContentWrapper {
+    opacity: 0;
+    visibility: hidden;
+    //transition: opacity 0.5s ease-out;
+
+  }
+`;
+

@@ -9,6 +9,7 @@ import ConfirmMail from '../components/registrationForm/components/ConfirmMail'
 import StudentsPage from '../pages/admin/students/StudentsPage'
 import Education from "../pages/Education/Education";
 import News from "../pages/News/News";
+import Works from "../pages/Works/Works";
 
 const AppRouter = () => {
     return (
@@ -25,6 +26,10 @@ const AppRouter = () => {
                 <Route
                     path="/news"
                     element={<News />}
+                />
+                <Route
+                    path="/works"
+                    element={<Works />}
                 />
                 <Route
                     path="/login"

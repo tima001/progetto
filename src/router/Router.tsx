@@ -1,15 +1,15 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import MainLayout from '../layouts/MainLayout'
 import Home from '../pages/Home/Home'
 import Login from '../pages/Login'
 import NotFound from '../pages/NotFound'
 import ProtectedRoute from '../components/ProtectedRoute'
 import ConfirmMail from '../components/registrationForm/components/ConfirmMail'
-import StudentsPage from '../pages/admin/students/StudentsPage'
+import NewsCreate from "../pages/admin/NewsCreate/NewsCreate";
 import Education from "../pages/Education/Education";
 import News from "../pages/News/News";
 import Works from "../pages/Works/Works";
+import AdminPage from "../pages/admin/adminPage/AdminPage";
 
 const AppRouter = () => {
     return (
@@ -45,11 +45,12 @@ const AppRouter = () => {
                 />
 
                 <Route element={<ProtectedRoute />}>
-                    <Route element={<MainLayout />}>
-                        <Route path='/students'>
-                            <Route index element={<StudentsPage />}/>
+                        <Route path='/user-page'>
+                            <Route index element={<AdminPage />}/>
                         </Route>
-                    </Route>
+                    <Route path='/news-create'>
+                            <Route index element={<NewsCreate />}/>
+                        </Route>
                 </Route>
 
                 <Route

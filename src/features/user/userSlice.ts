@@ -69,7 +69,7 @@ const userSlice = createSlice({
         },
 
         logout: (state) => {
-            storage?.remove('token')
+            // storage?.remove('token')
             storage?.remove('refreshToken')
             storage?.remove('user')
 
@@ -109,6 +109,13 @@ export const userApiSlice = createApi({
     reducerPath: 'userApi',
     baseQuery: baseQueryWithIam,
     endpoints: (build) => ({
+        fetchCurrentUser: build.query<any, void>({
+            query: () => ({
+                url: `/users/current`,
+            }),
+            transformResponse: (response: any) => response,
+        }),
+
         deleteUser: build.mutation<void, number>({
             query: (id) => ({
                 url: `/user/${id}`,

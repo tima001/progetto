@@ -7,12 +7,15 @@ import BannerBgEn from "../../assets/img/landing/banner-bg-news-en.png";
 import BannerBgRu from "../../assets/img/landing/banner-bg-news-ru.png";
 import {Box} from "@mui/system";
 import Typography from "@mui/material/Typography";
-import {BestWorks, NewsContent} from "../../utils/constants";
+import {BestWorks} from "../../utils/constants";
 import {ToggleButton, ToggleButtonGroup} from "@mui/material";
+import {newsApiSlice} from "../../features/news/newsSlice";
+import NewsItem from "./components/NewsItem";
 
 const News = () => {
     const {locale} = useIntl();
     const [alignment, setAlignment] = React.useState('web');
+    const {data: newsData, refetch} = newsApiSlice.useFetchNewsQuery();
 
     const handleChange = (event, newAlignment,) => {
         setAlignment(newAlignment);
@@ -87,79 +90,9 @@ const News = () => {
                 </GridBox>
                 <GridBox firstPadding={24} secondPadding={48}>
                     <Box>
-                        {NewsContent.map((b, index) => {
-                            return (
-                                <StyledBox key={index} src={b.img} height={700}>
-
-                                    <NewsContentWrapper className="contentWrapper">
-                                        <Box sx={{padding: '20px'}}>
-
-                                            <Typography
-                                                key={index}
-                                                variant="caption"
-                                                component="div"
-                                                color="text.secondary"
-                                                sx={{
-                                                    fontWeight: 500,
-                                                    fontSize: '28px',
-                                                    color: '#FFF',
-                                                }}
-                                            >
-                                                {b.title}
-                                            </Typography>
-                                            <Typography
-                                                key={index}
-                                                variant="caption"
-                                                component="div"
-                                                color="text.secondary"
-                                                sx={{
-                                                    fontWeight: 300,
-                                                    fontSize: '20px',
-                                                    color: '#FFF',
-                                                }}
-                                            >
-                                                {getClippedContent(b.content)}
-                                            </Typography>
-                                        </Box>
-
-                                    </NewsContentWrapper>
-
-                                    <NewsContentWrapper className="fullContentWrapper">
-                                        <Box sx={{padding: '20px'}}>
-
-                                            <Typography
-                                                key={index}
-                                                variant="caption"
-                                                component="div"
-                                                color="text.secondary"
-                                                sx={{
-                                                    fontWeight: 500,
-                                                    fontSize: '28px',
-                                                    color: '#FFF',
-                                                }}
-                                            >
-                                                {b.title}
-                                            </Typography>
-                                            <Typography
-                                                key={index}
-                                                variant="caption"
-                                                component="div"
-                                                color="text.secondary"
-                                                sx={{
-                                                    fontWeight: 300,
-                                                    fontSize: '20px',
-                                                    color: '#FFF',
-                                                }}
-                                            >
-                                                {b.content}
-                                            </Typography>
-                                        </Box>
-
-                                    </NewsContentWrapper>
-
-                                </StyledBox>
-                            )
-                        })}
+                        {newsData?.map((news) => (
+                            <NewsItem key={news.id} news={news} locale={locale} refetch={refetch}/>
+                        ))}
                     </Box>
                     <Box>
                         {BestWorks.map((b, index) => {

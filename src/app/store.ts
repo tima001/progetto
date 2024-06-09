@@ -1,17 +1,23 @@
 
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import { rtkQueryErrorLogger } from './rtkQueryErrorLogger'
-import userReducer from '../features/user/userSlice'
+import userReducer, {userApiSlice} from '../features/user/userSlice'
 import { studentApiSlice } from '../features/student/studentSlice'
+import {newsApiSlice} from "../features/news/newsSlice";
 
 export const store = configureStore({
     reducer: {
         user: userReducer,
         [studentApiSlice.reducerPath]: studentApiSlice.reducer,
+        [newsApiSlice.reducerPath]: newsApiSlice.reducer,
+        [userApiSlice.reducerPath]: userApiSlice.reducer,
+
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat([
             studentApiSlice.middleware,
+            newsApiSlice.middleware,
+            userApiSlice.middleware,
             rtkQueryErrorLogger,
         ]),
 })

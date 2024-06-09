@@ -14,6 +14,7 @@ const StudentsPage = () => {
                     Оқушылар
                 </Typography>
             </Box>
+            sdfdsfsdf
 
             <StudentsTable />
         </Box>

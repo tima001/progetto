@@ -22,6 +22,7 @@
     "@types/react-google-recaptcha": "^2.1.5",
     "@types/react-input-mask": "^3.0.2",
     "async-mutex": "^0.4.0",
+    "aws-sdk": "^2.1637.0",
     "axios": "^1.1.2",
     "chart.js": "^4.2.1",
     "dayjs": "^1.11.7",
@@ -55,6 +56,7 @@
     "react-toastify": "^9.0.8",
     "slick-carousel": "^1.8.1",
     "typescript": "^4.8.4",
+    "uuid": "^10.0.0",
     "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"

@@ -886,23 +886,18 @@ export const BestWorks = [
     },
     {
         id:2,
-        name: "Aziz Zhussipov",
+        name: "Adilet Myrzabay",
         img: BestWork2
     },
     {
         id:3,
-        name: "Aziz Zhussipov",
+        name: "Baharadzha",
         img: BestWork3
     },
     {
         id:4,
-        name: "Aziz Zhussipov",
+        name: "Tuljanov Nurali",
         img: BestWork4
-    },
-    {
-        id:5,
-        name: "Aziz Zhussipov",
-        img: BestWork5
     },
 
 ]

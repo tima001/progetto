@@ -274,6 +274,14 @@ export interface StudentState {
     type: string
 }
 
+export interface NewsState {
+    titleEn: string
+    titleRu: string
+    contentEn: string
+    contentRu: string
+    image: any
+}
+
 export interface StudentRegisterState extends StudentState {
     email: string
     confirmPassword: string

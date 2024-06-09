@@ -73,10 +73,11 @@ const LoginForm = () => {
                     mb: 6
                 }}
             >
-                Войти в учетную запись
+                {formatMessage({ id: 'loginAccount' })}
+
             </Typography>
 
-            <BoldText>Адрес электроной почты</BoldText>
+            <BoldText>{formatMessage({ id: 'email' })}</BoldText>
 
             <CustomInput
                 id="username"
@@ -85,7 +86,7 @@ const LoginForm = () => {
             />
 
             <Subtitle>
-                <BoldText>{formatMessage({ id: 'Пароль' })}</BoldText>
+                <BoldText>{formatMessage({ id: 'password' })}</BoldText>
             </Subtitle>
 
             <CustomInput
@@ -134,13 +135,13 @@ const LoginForm = () => {
                         style={{ marginRight: '8px' }}
                     />
                 ) : (
-                    formatMessage({ id: 'Продолжить' })
+                    formatMessage({ id: 'sign_in' })
                 )}
             </Button>
 
             <div style={{ margin: '16px 0' }}>
-                <Body1>
-                    {formatMessage({ id: 'У вас уже есть учетная запись?' })}
+                <Body1 >
+                    {formatMessage({ id: 'haveNotAccount' })}
                     <span
                         style={{
                             color: theme.palette.primary.main,
@@ -149,7 +150,7 @@ const LoginForm = () => {
                         }}
                         onClick={() => navigate('/sign-up')}
                     >
-                        {formatMessage({ id: 'Войти' })}
+                        {formatMessage({ id: 'sign_up' })}
                     </span>
                 </Body1>
             </div>

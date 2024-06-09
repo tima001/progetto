@@ -70,7 +70,6 @@ const SignupForm = () => {
     const navigate = useNavigate()
 
     const {formatMessage} = useIntl()
-    const [signupType, setSignupType] = useState('email')
     const [showPassword, setShowPassword] = useState(false)
 
     const [registerUser, {isLoading: isLoading}] =
@@ -161,7 +160,8 @@ const SignupForm = () => {
                         mb: 4
                     }}
                 >
-                    Создать учетную запись
+                    {formatMessage({ id: 'createAccount' })}
+
                 </Typography>
 
                 <Box mb={1} sx={styles.flexRow}>

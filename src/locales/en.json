@@ -24,6 +24,22 @@
   "WelcomeToWorksTitle": "Over 100+ finished works created together with our subscribers",
   "UploadWorks": "Develop your creativity with Progetto! \uD83D\uDE80",
   "UploadWorksInfo": "We are always ready to be inspired by your talent! If you have unique work that you would like to share with our creative community, send it to our email myrzabay@gmail.com. We respect your individuality and hard work, and we are ready to support your best work.",
-  "UploadWorksButton": "Send your work"
+  "UploadWorksButton": "Send your work",
+  "createAccount": "Create an account",
+  "loginAccount": "Login to your account",
+  "email": "E-MAIL",
+  "phone": "PHONE NUMBER",
+  "firstName": "FIRST NAME",
+  "lastName": "LAST NAME",
+  "password": "PASSWORD",
+  "type": "TYPE OF AUTHORISATION",
+  "haveAccount": "Do you have an account?",
+  "haveNotAccount": "You don't have an account?",
+  "sign_up": "SIGN UP",
+  "sign_in": "SIGN IN",
+  "admin": "ADMIN",
+  "designer": "DESIGNER",
+  "enterPhone": "ENTER PHONE NUMBER",
+  "enterPassword": "ENTER PASSWORD"
 
 }

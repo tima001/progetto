@@ -4,10 +4,10 @@ import TextField, { TextFieldProps } from '@mui/material/TextField'
 
 const CssTextField = styled(TextField)({
     '.MuiOutlinedInput-notchedOutline': {
-        borderColor: 'transparent',
+        borderColor: '#C1C1C1',
     },
     '.MuiInputBase-root': {
-        backgroundColor: 'rgb(241, 243, 245)',
+        backgroundColor: '#fff',
         borderRadius: '8px',
     },
 })

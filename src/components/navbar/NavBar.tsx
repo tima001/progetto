@@ -64,7 +64,7 @@ const NavBar = () => {
                         size="medium"
                         variant={'contained'}
                         color={"secondary"}
-                        onClick={() => navigate('/login')}
+                        onClick={() => navigate('/sign-up')}
                         sx={{color: '#fff'}}
                     >
                         <PencilLine size={24} />

@@ -6,28 +6,37 @@ import storage from '../../utils/storageService'
 export const userLogin = createAsyncThunk(
     'user/login',
     async ({ username, password }: any, { rejectWithValue }) => {
-        try {
-            const config = {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }
+        const payload = new URLSearchParams({
+            username: username,
+            password,
+            grant_type: 'password',
+        });
 
-            const { data } = await axios.post(
-                REACT_APP_IAM_SERVICE_BASE_URL + '/auth/login',
-                { username, password },
-                config,
-            )
+        try {
+            const response = await axios.post(
+                `${REACT_APP_IAM_SERVICE_BASE_URL}/uaa/oauth/token`,
+                payload,
+                {
+                    auth: {
+                        username: 'browser',
+                        password: '',
+                    },
+                }
+            );
+
             // store user's token in local storage
-            storage?.set('token', data.data.token)
-            storage?.set('refreshToken', data.data.refreshToken)
-            return data.data
+            storage?.set('token', response.data.access_token);
+
+            return response.data;
         } catch (error) {
             // return custom error message from API if any
-            return rejectWithValue(error.response.data)
+            return rejectWithValue(error.response ? error.response.data : null);
         }
     },
-)
+);
+
+
+
 
 // export const userChangePassword = createAsyncThunk(
 //     'user/changePassword',

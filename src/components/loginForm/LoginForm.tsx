@@ -10,24 +10,24 @@ import {
     IconButton,
 } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
-import logo from '../../assets/icons/Logo.svg'
 import { Body1, BoldText } from '../../layouts/TextStyles'
 import { userLogin } from '../../features/user/userActions'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { resetError } from '../../features/user/userSlice'
 import CustomInput from '../muiComponents/customInput'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
+import Typography from "@mui/material/Typography";
 
-const LoginForm = ({ toggleForm }) => {
+const LoginForm = () => {
     const theme = useTheme()
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const { formatMessage } = useIntl()
 
-    const { loading, userInfo, success, error } = useAppSelector(
+    const { loading, error } = useAppSelector(
         (state) => state.user,
     )
-    const [loginInfo, setLoginInfo] = useState({ username: '', password: '' })
+    const [loginInfo, setLoginInfo] = useState({ username: '', password: '', grant_type: 'password' })
     const [showPassword, setShowPassword] = useState(false)
 
     const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -35,7 +35,7 @@ const LoginForm = ({ toggleForm }) => {
 
         try {
             const result = await dispatch(userLogin(loginInfo)).unwrap()
-            navigateToPage(result.roles)
+            navigate('/user-page')
         } catch (error) {}
     }
 
@@ -57,23 +57,26 @@ const LoginForm = ({ toggleForm }) => {
         event.preventDefault()
     }
 
-    const navigateToPage = (roles) => {
-        if (roles.includes('STUDENT')) {
-            navigate('/my-courses')
-        } else {
-            navigate('/subjects')
-        }
-    }
 
     return (
         <Wrapper onSubmit={submitForm}>
-            <img
-                alt="logo"
-                src={logo}
-                style={{ width: 150, height: 22, margin: '0 auto 32px' }}
-            />
 
-            <BoldText>Почта немесе телефон</BoldText>
+            <Typography
+                variant="h5"
+                component="div"
+                color="text.secondary"
+                sx={{
+                    fontWeight: 300,
+                    fontSize: '42px',
+                    color: '#000000',
+                    textAlign: 'center',
+                    mb: 6
+                }}
+            >
+                Войти в учетную запись
+            </Typography>
+
+            <BoldText>Адрес электроной почты</BoldText>
 
             <CustomInput
                 id="username"
@@ -82,7 +85,7 @@ const LoginForm = ({ toggleForm }) => {
             />
 
             <Subtitle>
-                <BoldText>{formatMessage({ id: 'password' })}</BoldText>
+                <BoldText>{formatMessage({ id: 'Пароль' })}</BoldText>
             </Subtitle>
 
             <CustomInput
@@ -118,15 +121,12 @@ const LoginForm = ({ toggleForm }) => {
                 </Alert>
             )}
 
-            <div style={{ margin: '16px 0' }}>
-                <Body1 color={'#5185FF'}>Забыли пароль?</Body1>
-            </div>
-
             <Button
                 variant="contained"
                 size="large"
                 type="submit"
                 disabled={loading}
+                sx={{mt: 4}}
             >
                 {loading ? (
                     <CircularProgress
@@ -134,22 +134,22 @@ const LoginForm = ({ toggleForm }) => {
                         style={{ marginRight: '8px' }}
                     />
                 ) : (
-                    formatMessage({ id: 'sign_in' })
+                    formatMessage({ id: 'Продолжить' })
                 )}
             </Button>
 
             <div style={{ margin: '16px 0' }}>
                 <Body1>
-                    {formatMessage({ id: 'dontHaveAccount' })}
+                    {formatMessage({ id: 'У вас уже есть учетная запись?' })}
                     <span
                         style={{
                             color: theme.palette.primary.main,
                             marginLeft: 4,
                             cursor: 'pointer',
                         }}
-                        onClick={toggleForm}
+                        onClick={() => navigate('/sign-up')}
                     >
-                        {formatMessage({ id: 'sign_up' })}
+                        {formatMessage({ id: 'Войти' })}
                     </span>
                 </Body1>
             </div>
@@ -161,7 +161,6 @@ export default LoginForm
 
 const Wrapper = styled.form`
     background-color: white;
-    margin-top: 160px;
     width: 400px;
     min-height: 450px;
     border-radius: 8px;

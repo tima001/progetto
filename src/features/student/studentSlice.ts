@@ -66,21 +66,12 @@ export const studentApiSlice = createApi({
             transformResponse: (response: any) => response.data,
         }),
 
-        registerByEmail: build.mutation<void, StudentState>({
+        registerUser: build.mutation<any, StudentState>({
             query: (user) => ({
-                url: `/auth/register-by-email`,
+                url: `users/registration`,
                 method: 'POST',
                 body: user,
             }),
-        }),
-
-        registerByPhone: build.mutation<number, StudentState>({
-            query: (user) => ({
-                url: `/auth/register-by-phone`,
-                method: 'POST',
-                body: user,
-            }),
-            transformResponse: (response: any) => response.data,
         }),
     }),
 })

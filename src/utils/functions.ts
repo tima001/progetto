@@ -1,9 +1,5 @@
-import React from 'react'
-import { toast } from 'react-toastify'
-import { useIntl } from 'react-intl'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
-const history = require('history').createBrowserHistory()
 export const thousandSeparators = (number) => {
     if (!(number - 1) || number < 1000) {
         return number
@@ -113,7 +109,7 @@ export const removeDuplicateNumbers = (arr: Array<number>) => {
 // }
 
 export const convertToMobile = (mobile: string) => {
-    const mobileNumbers = mobile.replace(/\D/g, '').substring(1)
+    const mobileNumbers = mobile.replace(/\D/g, '')
 
     return mobileNumbers
 }

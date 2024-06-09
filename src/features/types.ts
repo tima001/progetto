@@ -268,8 +268,10 @@ export interface StudentState {
     id?: number
     firstName: string
     lastName: string
-    mobile: string
-    password?: string
+    email: string,
+    phone: string,
+    password: string,
+    type: string
 }
 
 export interface StudentRegisterState extends StudentState {

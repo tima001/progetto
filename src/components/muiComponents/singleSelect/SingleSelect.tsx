@@ -1,15 +1,14 @@
 import React from 'react'
-import _ from 'lodash'
-import { styled, Theme, useTheme } from '@mui/material/styles'
+import {styled,  useTheme} from '@mui/material/styles'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
-import { Checkbox, ListItemText } from '@mui/material'
-import { CheckCircle, RadioButtonUncheckedOutlined } from '@mui/icons-material'
-import { lang } from '../../../features/user/userSlice'
-import { useAppSelector } from '../../../app/hooks'
-import { capitalize } from '../../../utils/functions'
+import Select from '@mui/material/Select'
+import {Checkbox, ListItemText} from '@mui/material'
+import {CheckCircle, RadioButtonUncheckedOutlined} from '@mui/icons-material'
+import {lang} from '../../../features/user/userSlice'
+import {useAppSelector} from '../../../app/hooks'
+import {capitalize} from '../../../utils/functions'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -25,39 +24,38 @@ const MenuProps = {
 
 const CustomSelect = styled(OutlinedInput)({
     '.MuiOutlinedInput-notchedOutline': {
-        borderColor: 'transparent',
+        borderColor: '#C1C1C1',
     },
     '.MuiInputBase-root': {
-        backgroundColor: 'rgb(241, 243, 245)',
+        backgroundColor: 'rgb(255,255,255)',
         borderRadius: '8px',
     },
 })
 
 export default function SingleSelect({
-    id = '',
-    name = '',
-    value = null,
-    placeholder = '',
-    handleChange,
-    handleBlur = null,
-    handleError = null,
-    menuItems = [],
-    disabled = false,
-    small = false,
-    marginTop = 1,
-}) {
+                                         id = '',
+                                         name = '',
+                                         value = null,
+                                         placeholder = '',
+                                         handleChange,
+                                         handleBlur = null,
+                                         handleError = null,
+                                         menuItems = [],
+                                         disabled = false,
+                                         small = false,
+                                         marginTop = 1.8,
+                                     }) {
     const theme = useTheme()
     const language = useAppSelector(lang)
-    console.log('value', value)
+
     return (
         <div>
             <FormControl
                 sx={{
                     mt: marginTop,
                     width: '100%',
-                    backgroundColor: 'rgb(241, 243, 245)',
+                    backgroundColor: '#fff)',
                     borderRadius: '8px',
-
                     boxShadow: 0,
                 }}
                 size={small ? 'small' : 'medium'}
@@ -70,12 +68,12 @@ export default function SingleSelect({
                     disabled={disabled}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    input={<CustomSelect />}
+                    input={<CustomSelect/>}
                     error={handleError}
                     renderValue={(selected) => {
                         if (!selected) {
                             return (
-                                <div style={{ color: theme.palette.grey[600] }}>
+                                <div style={{color: theme.palette.grey[600]}}>
                                     {placeholder}
                                 </div>
                             )
@@ -111,8 +109,8 @@ export default function SingleSelect({
                                 }
                             />
                             <Checkbox
-                                icon={<RadioButtonUncheckedOutlined />}
-                                checkedIcon={<CheckCircle />}
+                                icon={<RadioButtonUncheckedOutlined/>}
+                                checkedIcon={<CheckCircle/>}
                                 checked={value === item.id}
                             />
                         </MenuItem>

@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import InputMask from 'react-input-mask'
-import { useIntl } from 'react-intl'
-import { toast } from 'react-toastify'
-import AuthCode from 'react-auth-code-input'
+import {useIntl} from 'react-intl'
+import {toast} from 'react-toastify'
 import * as yup from 'yup'
-import { useFormik } from 'formik'
+import {useFormik} from 'formik'
 import styled from '@emotion/styled'
-import { Visibility, VisibilityOff } from '@mui/icons-material'
+import {Visibility, VisibilityOff} from '@mui/icons-material'
 import {
     Box,
     Button,
@@ -15,20 +14,17 @@ import {
     InputAdornment,
     useTheme,
 } from '@mui/material'
-import { Body1, BoldText } from '../../layouts/TextStyles'
-import { studentApiSlice } from '../../features/student/studentSlice'
-import { StudentRegisterState } from '../../features/types'
-import { email, requiredMobile, requiredString } from '../../utils/validation'
-import { convertToMobile } from '../../utils/functions'
-import { userApiSlice } from '../../features/user/userSlice'
+import {Body1, BoldText} from '../../layouts/TextStyles'
+import {studentApiSlice} from '../../features/student/studentSlice'
+import {StudentState} from '../../features/types'
+import {email, requiredString} from '../../utils/validation'
 import CustomInput from '../muiComponents/customInput/CustomInput'
-import SignupTimer from './components/SignupTimer'
 import Typography from "@mui/material/Typography";
 import {useNavigate} from "react-router-dom";
+import SingleSelect from "../muiComponents/singleSelect";
+import {SelectChangeEvent} from "@mui/material/Select";
+import {convertToMobile} from "../../utils/functions";
 
-
-
-const SMS_CODE_LENGTH = 6
 
 const SignupForm = () => {
     const theme = useTheme()
@@ -73,42 +69,30 @@ const SignupForm = () => {
     }
     const navigate = useNavigate()
 
-    const { formatMessage } = useIntl()
+    const {formatMessage} = useIntl()
     const [signupType, setSignupType] = useState('email')
     const [showPassword, setShowPassword] = useState(false)
-    const [showSmsCode, setShowSmsCode] = useState(false)
-    const [smsCodeDuration, setSmsCodeDuration] = useState(0)
-    const [isTimeExpired, setTimeExpired] = useState(undefined)
-    const [smsCode, setSmsCode] = useState('')
 
-    const [registerByEmail, { isLoading: isLoadingByEmail }] =
-        studentApiSlice.useRegisterByEmailMutation()
-    const [registerByPhone, { isLoading: isLoadingByPhone }] =
-        studentApiSlice.useRegisterByPhoneMutation()
-    const [activateSmsCode, { isLoading: isLoadingActivate }] =
-        userApiSlice.useActivateSmsCodeMutation()
+    const [registerUser, {isLoading: isLoading}] =
+        studentApiSlice.useRegisterUserMutation()
 
     const disabledSignUpButton =
-        showSmsCode || isLoadingByEmail || isLoadingByPhone
-    const isLoadingSignUp =
-        !showSmsCode && (isLoadingByEmail || isLoadingByPhone)
+        isLoading
 
-    const user: StudentRegisterState = {
+    const user: StudentState = {
         firstName: '',
         lastName: '',
         email: '',
-        mobile: '',
+        phone: '',
         password: '',
-        confirmPassword: '',
+        type: ''
     }
 
     const validationSchema = yup.object().shape({
-        firstName: requiredString({ formatMessage }),
-        lastName: requiredString({ formatMessage }),
-        mobile: signupType === 'phone' && requiredMobile({ formatMessage }),
-        password: requiredString({ formatMessage }),
-        confirmPassword: requiredString({ formatMessage }),
-        email: signupType === 'email' && email({ formatMessage }),
+        firstName: requiredString({formatMessage}),
+        lastName: requiredString({formatMessage}),
+        password: requiredString({formatMessage}),
+        email: email({formatMessage}),
     })
 
     const formik = useFormik({
@@ -117,75 +101,27 @@ const SignupForm = () => {
         validateOnChange: false,
         validateOnBlur: false,
         onSubmit: () => {
-            const isPasswordMatch =
-                formik.values.password === formik.values.confirmPassword
-
-            if (isPasswordMatch) {
-                if (signupType === 'email') {
-                    handleRegisterByEmail()
-                } else {
-                    handleRegisterByPhone()
-                }
-            } else {
-                toast.error(formatMessage({ id: 'mustPasswordsMatch' }))
-            }
+            handleRegister()
         },
     })
 
-    const handleRegisterByEmail = async () => {
+    const handleRegister = async () => {
         try {
-            await registerByEmail(formik.values).unwrap()
-            toast.success(formatMessage({ id: 'linkIsSentCheckEmail' }))
-        } catch (error) {}
-    }
-
-    const handleRegisterByPhone = async () => {
-        try {
-            const result = await registerByPhone({
+            const phoneNumber = convertToMobile(formik.values.phone); // Convert phone number format
+            const response = await registerUser({
                 ...formik.values,
-                mobile: convertToMobile(formik.values.mobile),
-            }).unwrap()
-            setSmsCodeDuration(result)
-            setShowSmsCode(true)
-            toast.success(formatMessage({ id: 'smsIsSentCheckPhone' }))
-        } catch (error) {}
-    }
-
-    const handleActivateCode = async () => {
-        try {
-            await activateSmsCode({
-                mobile: convertToMobile(formik.values.mobile),
-                code: +smsCode,
-            }).unwrap()
-            toast.success(formatMessage({ id: 'registerSuccess' }))
-        } catch (error) {}
-    }
-
-    const handleSubmitCode = async () => {
-        if (isTimeExpired) {
-            await handleRegisterByPhone()
-            setTimeExpired(false)
-        } else {
-            if (smsCode.length === SMS_CODE_LENGTH) {
-                handleActivateCode()
+                phone: phoneNumber,
+            }).unwrap();
+            if (response.status === 0 || response.status === 2) {
+                toast.error(response.message || 'Registration failed');
             } else {
-                toast.error(
-                    formatMessage(
-                        { id: 'fillNumbers' },
-                        { value: SMS_CODE_LENGTH },
-                    ),
-                )
+                toast.success(response.message || 'Registration successful');
             }
+        } catch (error) {
+            toast.error(error.message || 'An error occurred');
         }
     }
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSignupType((event.target as HTMLInputElement).value)
-    }
-
-    const handleSmsCodeChange = (value: string) => {
-        setSmsCode(value)
-    }
 
     const handleClickShowPassword = () => setShowPassword((show) => !show)
 
@@ -193,6 +129,21 @@ const SignupForm = () => {
         event: React.MouseEvent<HTMLButtonElement>,
     ) => {
         event.preventDefault()
+    }
+
+    const genderItems = [
+        {id: 'ADMIN', title: formatMessage({id: 'admin'})},
+        {id: 'DESIGNER', title: formatMessage({id: 'designer'})},
+    ]
+
+    const handleChange = (
+        event: SelectChangeEvent<typeof formik.values.type>,
+    ) => {
+        const {
+            target: {value},
+        } = event
+
+        formik.setFieldValue('type', value)
     }
 
     return (
@@ -219,7 +170,7 @@ const SignupForm = () => {
                         sx={styles.fullWidth}
                         mr={4}
                     >
-                        <BoldText>{formatMessage({ id: 'email' })}</BoldText>
+                        <BoldText>{formatMessage({id: 'email'})}</BoldText>
 
                         <CustomInput
                             id="email"
@@ -235,23 +186,23 @@ const SignupForm = () => {
                     </Box>
 
                     <Box sx={styles.fullWidth}>
-                        <BoldText>{formatMessage({ id: 'phone' })}</BoldText>
+                        <BoldText>{formatMessage({id: 'phone'})}</BoldText>
 
                         <InputMask
                             mask="+7 (999) 999-99-99"
-                            value={formik.values.mobile}
+                            value={formik.values.phone}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                         >
                             <CustomInput
-                                id="mobile"
-                                name="mobile"
+                                id="phone"
+                                name="phone"
                                 placeholder={formatMessage({
                                     id: 'enterPhone',
                                 })}
                                 fullWidth
-                                helperText={formik.errors.mobile}
-                                error={Boolean(formik.errors.mobile)}
+                                helperText={formik.errors.phone}
+                                error={Boolean(formik.errors.phone)}
                             />
                         </InputMask>
                     </Box>
@@ -263,7 +214,7 @@ const SignupForm = () => {
                         mr={4}
                     >
                         <BoldText>
-                            {formatMessage({ id: 'firstName' })}
+                            {formatMessage({id: 'firstName'})}
                         </BoldText>
 
                         <CustomInput
@@ -278,7 +229,7 @@ const SignupForm = () => {
                     </Box>
 
                     <Box sx={styles.fullWidth}>
-                        <BoldText>{formatMessage({ id: 'lastName' })}</BoldText>
+                        <BoldText>{formatMessage({id: 'lastName'})}</BoldText>
 
                         <CustomInput
                             id="lastName"
@@ -300,7 +251,7 @@ const SignupForm = () => {
                         sx={styles.fullWidth}
                         mr={4}
                     >
-                        <BoldText>{formatMessage({ id: 'password' })}</BoldText>
+                        <BoldText>{formatMessage({id: 'password'})}</BoldText>
 
                         <CustomInput
                             id="password"
@@ -325,9 +276,9 @@ const SignupForm = () => {
                                             edge="end"
                                         >
                                             {showPassword ? (
-                                                <VisibilityOff />
+                                                <VisibilityOff/>
                                             ) : (
-                                                <Visibility />
+                                                <Visibility/>
                                             )}
                                         </IconButton>
                                     </InputAdornment>
@@ -338,41 +289,20 @@ const SignupForm = () => {
 
                     <Box sx={styles.fullWidth}>
                         <BoldText>
-                            {formatMessage({ id: 'password_confirm' })}
+                            {formatMessage({id: 'type'})}
                         </BoldText>
+                        <SingleSelect
+                            name="type"
+                            value={formik.values.type}
+                            handleChange={handleChange}
+                            menuItems={genderItems}
+                            handleBlur={formik.handleBlur}
+                            handleError={Boolean(
+                                formik.errors.type
+                            )}
 
-                        <CustomInput
-                            id="confirmPassword"
-                            placeholder={formatMessage({
-                                id: 'password_confirm',
-                            })}
-                            type={showPassword ? 'text' : 'password'}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            error={Boolean(formik.errors.confirmPassword)}
-                            helperText={formik.errors.confirmPassword}
-                            fullWidth
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={
-                                                handleMouseDownPassword
-                                            }
-                                            edge="end"
-                                        >
-                                            {showPassword ? (
-                                                <VisibilityOff />
-                                            ) : (
-                                                <Visibility />
-                                            )}
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
-                            }}
                         />
+
                     </Box>
                 </Box>
 
@@ -382,73 +312,30 @@ const SignupForm = () => {
                     disabled={disabledSignUpButton}
                     onClick={() => formik.handleSubmit()}
                 >
-                    {isLoadingSignUp ? (
+                    {isLoading ? (
                         <CircularProgress
                             size={20}
-                            style={{ marginRight: '8px' }}
+                            style={{marginRight: '8px'}}
                         />
                     ) : (
-                        formatMessage({ id: 'sign_up' })
+                        formatMessage({id: 'sign_up'})
                     )}
                 </Button>
 
-                <Box style={{ margin: '16px 0' }}>
+                <Box style={{margin: '16px 0'}}>
                     <Body1>
-                        {formatMessage({ id: 'haveAccount' })}
+                        {formatMessage({id: 'haveAccount'})}
 
                         <span
                             style={styles.toggleSpan}
                             onClick={() => navigate('/login')}
                         >
-                            {formatMessage({ id: 'sign_in' })}
+                            {formatMessage({id: 'sign_in'})}
                         </span>
                     </Body1>
                 </Box>
             </Wrapper>
 
-            {showSmsCode && (
-                <Box sx={styles.smsCodeBox}>
-                    <Box sx={styles.flexRowCenter}>
-                        <BoldText>
-                            {formatMessage({ id: 'sentSmsCodeMore' })}&nbsp;
-                        </BoldText>
-
-                        <BoldText>
-                            <SignupTimer
-                                smsCodeDuration={smsCodeDuration}
-                                isTimeExpired={isTimeExpired}
-                                onExpire={() => setTimeExpired(true)}
-                            />
-                        </BoldText>
-                    </Box>
-
-                    <AuthCode
-                        onChange={handleSmsCodeChange}
-                        allowedCharacters="numeric"
-                        length={6}
-                        containerClassName="authCodeContainer"
-                        inputClassName="authCodeInput"
-                    />
-
-                    <Button
-                        sx={{ mt: 2 }}
-                        variant="contained"
-                        onClick={handleSubmitCode}
-                        disabled={isLoadingActivate || isLoadingByPhone}
-                    >
-                        {isLoadingActivate || isLoadingByPhone ? (
-                            <CircularProgress
-                                size={20}
-                                style={{ marginRight: '8px' }}
-                            />
-                        ) : isTimeExpired ? (
-                            formatMessage({ id: 'sentSmsCodeMore' })
-                        ) : (
-                            formatMessage({ id: 'submit' })
-                        )}
-                    </Button>
-                </Box>
-            )}
         </Box>
     )
 }
@@ -456,12 +343,12 @@ const SignupForm = () => {
 export default SignupForm
 
 const Wrapper = styled.form`
-    background-color: white;
-    width: 760px;
-    min-height: 450px;
-    border-radius: 8px;
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+  background-color: white;
+  width: 760px;
+  min-height: 450px;
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 `

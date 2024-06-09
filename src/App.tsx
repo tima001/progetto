@@ -25,7 +25,7 @@ function App() {
                 messages={messages[language]}
                 locale={language}
                 defaultLocale="ru"
-                onError={() => console.log('intl error')}
+                onError={() => console.log()}
             >
                 <IntlGlobalProvider>
                     <AppRouter />

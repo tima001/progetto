@@ -770,6 +770,24 @@ export const NavBarContentText = [
         title: "news",
     },
 ]
+export const AdminNavBarContentText = [
+    {
+        title: "resources",
+        navigate: "resources-create",
+    },
+    {
+        title: "education",
+        navigate: "education-create",
+    },
+    {
+        title: "works",
+        navigate: "works-create",
+    },
+    {
+        title: "news",
+        navigate: "news-create",
+    },
+]
 export const EducationContent = [
     {
         titleRu: null,

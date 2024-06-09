@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {newsApiSlice} from "../../../features/news/newsSlice";
 import storage from "../../../utils/storageService";
 import {Box} from "@mui/system";
 import {Button, capitalize, Typography} from "@mui/material";
@@ -57,6 +56,8 @@ const NewsItem = ({news, locale, refetch}) => {
                                 fontWeight: 300,
                                 fontSize: '20px',
                                 color: '#FFF',
+                                maxWidth: '65vw',
+
                             }}
                         >
                             {news[`content${capitalize(locale)}`]}
@@ -78,6 +79,7 @@ const NewsItem = ({news, locale, refetch}) => {
                                 fontWeight: 500,
                                 fontSize: '28px',
                                 color: '#FFF',
+
                             }}
                         >
                             {news[`title${capitalize(locale)}`]}
@@ -90,6 +92,8 @@ const NewsItem = ({news, locale, refetch}) => {
                                 fontWeight: 300,
                                 fontSize: '20px',
                                 color: '#FFF',
+                                maxWidth: '65vw',
+
                             }}
                         >
                             {news[`content${capitalize(locale)}`]}

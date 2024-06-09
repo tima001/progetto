@@ -4,7 +4,7 @@ import axios from "axios";
 import storage from "../../../../utils/storageService";
 import {Box} from "@mui/system";
 import {Button, capitalize, Typography} from "@mui/material";
-import {Pen, Trash} from "@phosphor-icons/react";
+import {Trash} from "@phosphor-icons/react";
 import styled from "@emotion/styled";
 
 const NewsItem = ({news, locale, refetch}) => {
@@ -68,15 +68,14 @@ const NewsItem = ({news, locale, refetch}) => {
                                 fontWeight: 300,
                                 fontSize: '20px',
                                 color: '#FFF',
+                                maxWidth: '58vw',
                             }}
                         >
                             {news[`content${capitalize(locale)}`]}
                         </Typography>
                     </Box>
                     <FlexBox gap="16px">
-                        <StyledButton variant="contained">
-                            <Pen size={32} color={"white"}/>
-                        </StyledButton>
+
                         <StyledButton variant="contained" onClick={handleDelete}>
                             <Trash size={32} color={"white"} />
                         </StyledButton>

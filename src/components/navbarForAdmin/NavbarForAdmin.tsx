@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import Logo from '../../assets/img/Logo.png'
 import {Link} from 'react-router-dom'
@@ -12,8 +12,10 @@ import MenuItem from "@mui/material/MenuItem";
 import {useAppDispatch} from "../../app/hooks";
 import {logout} from "../../features/user/userSlice";
 import {ArrowLineLeft, UserCircle} from "@phosphor-icons/react";
+import {AdminNavBarContentText} from "../../utils/constants";
 
 const NavbarForAdmin = ({avatar, fio}) => {
+    const {formatMessage} = useIntl()
     const navigate = useNavigate()
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -33,20 +35,26 @@ const NavbarForAdmin = ({avatar, fio}) => {
                     <Link to="/">
                         <img height={62} src={Logo} alt={"logo"}/>
                     </Link>
-                    <Typography
-                        variant="caption"
-                        component="div"
-                        color="text.secondary"
-                        onClick={() =>  navigate(`/news-create`)}
-                        sx={{
-                            fontWeight: 300,
-                            fontSize: '24px',
-                            color: '#93918D',
-                            cursor: 'pointer',
-                        }}
-                    >
-                        News Create
-                    </Typography>
+                    {AdminNavBarContentText.map((b, index) => {
+                        return (
+                            <Typography
+                                key={index}
+                                variant="caption"
+                                component="div"
+                                color="text.secondary"
+                                onClick={() =>  navigate(`/${b.navigate}`)}
+                                sx={{
+                                    fontWeight: 300,
+                                    fontSize: '24px',
+                                    color: '#93918D',
+                                    cursor: 'pointer',
+                                }}
+                            >
+                                {formatMessage({id: b.title})}
+                            </Typography>
+                        )
+                    })}
+
 
 
                 </FlexBox>

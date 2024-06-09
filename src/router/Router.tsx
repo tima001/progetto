@@ -10,6 +10,8 @@ import Education from "../pages/Education/Education";
 import News from "../pages/News/News";
 import Works from "../pages/Works/Works";
 import AdminPage from "../pages/admin/adminPage/AdminPage";
+import WorksCreate from "../pages/admin/WorksCreate/Works";
+import EducationCreate from "../pages/admin/EducationCreate/Education";
 
 const AppRouter = () => {
     return (
@@ -50,6 +52,12 @@ const AppRouter = () => {
                         </Route>
                     <Route path='/news-create'>
                             <Route index element={<NewsCreate />}/>
+                        </Route>
+                    <Route path='/works-create'>
+                            <Route index element={<WorksCreate />}/>
+                        </Route>
+                    <Route path='/education-create'>
+                            <Route index element={<EducationCreate />}/>
                         </Route>
                 </Route>
 

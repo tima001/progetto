@@ -7,12 +7,15 @@ import BannerBgEn from "../../assets/img/landing/banner-bg-education-en.png";
 import BannerBgRu from "../../assets/img/landing/banner-bg-education-ru.png";
 import Typography from "@mui/material/Typography";
 import {Box} from "@mui/system";
-import {EducationContent} from "../../utils/constants";
-import {capitalize} from "@mui/material";
+import EducationItem from "./components/EducationItem"
+import {educationApiSlice} from "../../features/education/educationSlice";
 
 const Home = () => {
     const { formatMessage } = useIntl()
     const {locale} = useIntl()
+
+    const {data: eduData, refetch} = educationApiSlice.useFetchNewsQuery()
+
     return (
         <Wrapper>
             <Navbar/>
@@ -47,99 +50,17 @@ const Home = () => {
                             fontWeight: 200,
                             fontSize: '34px',
                             textAlign: 'center',
-                            color: '#93918D'
+                            color: '#93918D',
+                            mb: '48px'
                         }}
                     >
 
                         {formatMessage({ id: '50ChanelsInfo' })}
 
                     </Typography>
-                    {EducationContent.map((row) => {
-                        return (
-                            <>
-                                <Typography
-                                    variant="h1"
-                                    component="div"
-                                    color="text.secondary"
-                                    sx={{
-                                        fontWeight: 400,
-                                        fontSize: '42px',
-                                        color: '#FFF',
-                                        mt: 12,
-                                        mb: 4
-                                    }}
-                                >
-                                    {row[`title${capitalize(locale)}`]}
-
-                                </Typography>
-                                <Typography
-                                    variant="h1"
-                                    component="div"
-                                    color="text.secondary"
-                                    sx={{
-                                        fontWeight: 200,
-                                        fontSize: '32px',
-                                        color: '#93918D',
-                                        mb: 8
-                                    }}
-                                >
-                                    {row[`description${capitalize(locale)}`]}
-                                </Typography>
-                                {
-                                    row.content.map((b, index) => {
-                                        return (
-                                            <StyledCard key={index}>
-                                                <FlexBox direction="column" justify="space-between" padding="24px">
-                                                    <FlexBox gap="24px">
-                                                        <img alt="logo" src={b.logo} width={60} height={60}
-                                                             style={{borderRadius: '50%'}}/>
-                                                        <Typography
-                                                            variant="h1"
-                                                            component="div"
-                                                            color="text.secondary"
-                                                            sx={{
-                                                                fontWeight: 400,
-                                                                fontSize: '32px',
-                                                                color: '#000'
-                                                            }}
-                                                        >
-                                                            {b[`title${capitalize(locale)}`]}
-                                                        </Typography>
-
-                                                    </FlexBox>
-                                                    <Typography
-                                                        variant="h1"
-                                                        component="div"
-                                                        color="text.secondary"
-                                                        sx={{
-                                                            fontWeight: 300,
-                                                            fontSize: '32px',
-                                                            color: 'rgba(0,0,0,0.78)'
-                                                        }}
-                                                        dangerouslySetInnerHTML={{__html: b[`description${capitalize(locale)}`]}}
-                                                    />
-                                                    <Typography
-                                                        variant="h1"
-                                                        component="div"
-                                                        color="text.secondary"
-                                                        sx={{
-                                                            fontWeight: 400,
-                                                            fontSize: '32px',
-                                                            color: 'rgba(0,0,0,0.78)'
-                                                        }}
-                                                    >
-                                                        {b.link}
-                                                    </Typography>
-                                                </FlexBox>
-                                                <StyledImg src={b.photo}/>
-                                            </StyledCard>
-                                        )
-                                    })
-                                }
-
-                            </>
-                        )
-                    })}
+                    {eduData?.map((news) => (
+                        <EducationItem key={news.id} news={news} locale={locale}/>
+                    ))}
                 </Box>
 
             </Main>

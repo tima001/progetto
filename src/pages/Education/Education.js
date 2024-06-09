@@ -11,6 +11,7 @@ import {EducationContent} from "../../utils/constants";
 import {capitalize} from "@mui/material";
 
 const Home = () => {
+    const { formatMessage } = useIntl()
     const {locale} = useIntl()
     return (
         <Wrapper>
@@ -35,7 +36,8 @@ const Home = () => {
                             textAlign: 'center'
                         }}
                     >
-                        Топ 50 каналов и Полезных Ресурсов для Дизайнеров!
+                        {formatMessage({ id: '50Chanels' })}
+
                     </Typography>
                     <Typography
                         variant="h1"
@@ -49,9 +51,8 @@ const Home = () => {
                         }}
                     >
 
-                        Привет, увлеченные дизайном! Если вы ищете вдохновение, знания и уникальные идеи, то эта
-                        страница для вас. Мир дизайна богат разнообразием и креативом. Мы подготовили для вас подборку
-                        лучших Каналов и полезных ресурсов, которые помогут вам раскрыть свой талант и стать еще лучше!
+                        {formatMessage({ id: '50ChanelsInfo' })}
+
                     </Typography>
                     {EducationContent.map((row) => {
                         return (

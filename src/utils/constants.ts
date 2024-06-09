@@ -22,7 +22,7 @@ export const Lorum =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nunc maecenas dignissim non ultrices turpis felis. Pulvinar odio in lobortis semper tellus pharetra, aenean odio sed. Tempor, sit risus pretium pretium, eleifend enim. Amet eget sem volutpat tortor mattis ut tincidunt est. Urna volutpat semper morbi neque consectetur aliquet tellus. Egestas id etiam mi lacus in hendrerit scelerisque sed. Enim volutpat sem mattis pretium. Tristique morbi imperdiet vitae volutpat viverra in. Sed at lobortis sagittis, ullamcorper platea dictum curabitur viverra sit.'
 
 export const REACT_APP_IAM_SERVICE_BASE_URL =
-    'https://educon-online-iam-service.azurewebsites.net/api'
+    'http://192.168.0.11:4000'
 
 export const REACT_APP_ONLINE_COURSE_BASE_URL =
     'https://educon-online-course-service.azurewebsites.net/api'

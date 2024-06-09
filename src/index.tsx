@@ -31,10 +31,10 @@ declare module '@mui/material/styles' {
 const theme = createTheme({
     palette: {
         primary: {
-            main: '#F6C944',
+            main: '#23854A',
         },
         secondary: {
-            main: '#00B998',
+            main: '#404044',
         },
         grey: {
             100: '#F1F3F5',
@@ -90,7 +90,7 @@ const theme = createTheme({
                 },
                 containedPrimary: {
                     ':hover': {
-                        background: '#daac24',
+                        background: 'rgba(35,133,74,0.84)',
                         // boxShadow: '4px 4px 0px #000000',
                     }
                 }

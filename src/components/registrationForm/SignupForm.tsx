@@ -11,14 +11,10 @@ import {
     Box,
     Button,
     CircularProgress,
-    FormControlLabel,
     IconButton,
     InputAdornment,
-    Radio,
-    RadioGroup,
     useTheme,
 } from '@mui/material'
-import logo from '../../assets/icons/Logo.svg'
 import { Body1, BoldText } from '../../layouts/TextStyles'
 import { studentApiSlice } from '../../features/student/studentSlice'
 import { StudentRegisterState } from '../../features/types'
@@ -27,14 +23,14 @@ import { convertToMobile } from '../../utils/functions'
 import { userApiSlice } from '../../features/user/userSlice'
 import CustomInput from '../muiComponents/customInput/CustomInput'
 import SignupTimer from './components/SignupTimer'
+import Typography from "@mui/material/Typography";
+import {useNavigate} from "react-router-dom";
 
-interface Props {
-    toggleForm: () => void
-}
+
 
 const SMS_CODE_LENGTH = 6
 
-const SignupForm: React.FC<Props> = ({ toggleForm }) => {
+const SignupForm = () => {
     const theme = useTheme()
     const styles = {
         logo: {
@@ -75,6 +71,7 @@ const SignupForm: React.FC<Props> = ({ toggleForm }) => {
             cursor: 'pointer',
         },
     }
+    const navigate = useNavigate()
 
     const { formatMessage } = useIntl()
     const [signupType, setSignupType] = useState('email')
@@ -139,7 +136,6 @@ const SignupForm: React.FC<Props> = ({ toggleForm }) => {
         try {
             await registerByEmail(formik.values).unwrap()
             toast.success(formatMessage({ id: 'linkIsSentCheckEmail' }))
-            toggleForm()
         } catch (error) {}
     }
 
@@ -162,7 +158,6 @@ const SignupForm: React.FC<Props> = ({ toggleForm }) => {
                 code: +smsCode,
             }).unwrap()
             toast.success(formatMessage({ id: 'registerSuccess' }))
-            toggleForm()
         } catch (error) {}
     }
 
@@ -203,34 +198,26 @@ const SignupForm: React.FC<Props> = ({ toggleForm }) => {
     return (
         <Box mt="10px">
             <Wrapper onSubmit={formik.handleSubmit}>
-                <img
-                    alt="logo"
-                    src={logo}
-                    style={styles.logo}
-                />
-
-                <RadioGroup
-                    style={styles.radioGroup as React.CSSProperties}
-                    value={signupType}
-                    onChange={handleChange}
+                <Typography
+                    variant="h5"
+                    component="div"
+                    color="text.secondary"
+                    sx={{
+                        fontWeight: 300,
+                        fontSize: '42px',
+                        color: '#000000',
+                        textAlign: 'center',
+                        mb: 4
+                    }}
                 >
-                    <FormControlLabel
-                        value="email"
-                        control={<Radio />}
-                        label={formatMessage({ id: 'byEmail' })}
-                    />
+                    Создать учетную запись
+                </Typography>
 
-                    <FormControlLabel
-                        value="phone"
-                        control={<Radio />}
-                        label={formatMessage({ id: 'byPhone' })}
-                    />
-                </RadioGroup>
+                <Box mb={1} sx={styles.flexRow}>
 
-                {signupType === 'email' ? (
                     <Box
                         sx={styles.fullWidth}
-                        mb={2}
+                        mr={4}
                     >
                         <BoldText>{formatMessage({ id: 'email' })}</BoldText>
 
@@ -246,11 +233,8 @@ const SignupForm: React.FC<Props> = ({ toggleForm }) => {
                             fullWidth
                         />
                     </Box>
-                ) : (
-                    <Box
-                        sx={styles.fullWidth}
-                        mb={2}
-                    >
+
+                    <Box sx={styles.fullWidth}>
                         <BoldText>{formatMessage({ id: 'phone' })}</BoldText>
 
                         <InputMask
@@ -268,13 +252,12 @@ const SignupForm: React.FC<Props> = ({ toggleForm }) => {
                                 fullWidth
                                 helperText={formik.errors.mobile}
                                 error={Boolean(formik.errors.mobile)}
-                                margin="dense"
                             />
                         </InputMask>
                     </Box>
-                )}
+                </Box>
 
-                <Box sx={styles.flexRow}>
+                <Box mb={1} sx={styles.flexRow}>
                     <Box
                         sx={styles.fullWidth}
                         mr={4}
@@ -415,7 +398,7 @@ const SignupForm: React.FC<Props> = ({ toggleForm }) => {
 
                         <span
                             style={styles.toggleSpan}
-                            onClick={toggleForm}
+                            onClick={() => navigate('/login')}
                         >
                             {formatMessage({ id: 'sign_in' })}
                         </span>

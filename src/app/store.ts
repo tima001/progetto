@@ -5,6 +5,7 @@ import userReducer, {userApiSlice} from '../features/user/userSlice'
 import { studentApiSlice } from '../features/student/studentSlice'
 import {newsApiSlice} from "../features/news/newsSlice";
 import {educationApiSlice} from "../features/education/educationSlice";
+import { recourcesApiSlice } from '../features/recources/recourcesSlice';
 
 export const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
         [studentApiSlice.reducerPath]: studentApiSlice.reducer,
         [newsApiSlice.reducerPath]: newsApiSlice.reducer,
         [educationApiSlice.reducerPath]: educationApiSlice.reducer,
+        [recourcesApiSlice.reducerPath]: recourcesApiSlice.reducer,
         [userApiSlice.reducerPath]: userApiSlice.reducer,
 
     },
@@ -20,6 +22,7 @@ export const store = configureStore({
             studentApiSlice.middleware,
             newsApiSlice.middleware,
             educationApiSlice.middleware,
+            recourcesApiSlice.middleware,
             userApiSlice.middleware,
             rtkQueryErrorLogger,
         ]),

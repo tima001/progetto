@@ -12,6 +12,8 @@ import Works from "../pages/Works/Works";
 import AdminPage from "../pages/admin/adminPage/AdminPage";
 import WorksCreate from "../pages/admin/WorksCreate/Works";
 import EducationCreate from "../pages/admin/EducationCreate/Education";
+import ResourcesCreate from "../pages/admin/ResourcesCreate/Resources";
+import Resources from "../pages/Resources/Resources";
 
 const AppRouter = () => {
     return (
@@ -32,6 +34,10 @@ const AppRouter = () => {
                 <Route
                     path="/works"
                     element={<Works />}
+                />
+                <Route
+                    path="/resources"
+                    element={<Resources />}
                 />
                 <Route
                     path="/login"
@@ -58,6 +64,8 @@ const AppRouter = () => {
                         </Route>
                     <Route path='/education-create'>
                             <Route index element={<EducationCreate />}/>
+                        </Route> <Route path='/resources-create'>
+                            <Route index element={<ResourcesCreate />}/>
                         </Route>
                 </Route>
 

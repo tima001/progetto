@@ -5,14 +5,14 @@ import { StudentState} from '../types'
 interface Props {
     id: string
 }
-export const educationApiSlice = createApi({
-    reducerPath: 'educationApi',
+export const recourcesApiSlice = createApi({
+    reducerPath: 'recourcesApi',
     baseQuery: baseQueryWithIam,
     tagTypes: ['Education'],
     endpoints: (build) => ({
         fetchNews: build.query<any, string>({
             query: () => ({
-                url: `/main/education/list`,
+                url: `/main/resource/list`,
             }),
 
             transformResponse: (response: any) => response,
@@ -25,10 +25,16 @@ export const educationApiSlice = createApi({
 
 
         }),
+        fetchFile: build.query<any, Props>({
+            query: (props) => ({
+                url: `/file/ownload/${props.id}filename=Men`,
+            }),
+        }),
+
 
         createEducation: build.mutation<void, any>({
             query: (news) => ({
-                url: '/main/education/create',
+                url: '/main/resource/create',
                 method: 'POST',
                 body: news,
             }),
@@ -36,6 +42,14 @@ export const educationApiSlice = createApi({
         createImg: build.mutation<any, any>({
             query: (news) => ({
                 url: '/file/image/upload',
+                method: 'POST',
+                body: news,
+            }),
+            transformResponse: (response: any) => response,
+        }),
+         createFile: build.mutation<any, any>({
+            query: (news) => ({
+                url: '/file/upload',
                 method: 'POST',
                 body: news,
             }),
@@ -54,7 +68,7 @@ export const educationApiSlice = createApi({
 
         deleteNews: build.mutation<void, Props>({
             query: (props) => ({
-                url: `/main/education/delete/${props.id}`,
+                url: `/main/resource/delete/${props.id}`,
                 method: 'DELETE',
             }),
         }),

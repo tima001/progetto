@@ -72,7 +72,8 @@ const Home = () => {
                         Создать ресурс
                     </StyledButton>
                     {eduData?.map((news) => (
-                        <EducationItem key={news.id} news={news} locale={locale} refetch={refetch}/>
+                        <EducationItem
+                            key={news.id} news={news} locale={locale} refetch={refetch}/>
                     ))}
                 </Box>
 

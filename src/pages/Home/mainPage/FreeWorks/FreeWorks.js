@@ -8,13 +8,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 // Assuming these are your images
-import image1 from '../../../../assets/img/landing/resourseImage1.jpeg';
-import image2 from '../../../../assets/img/landing/resourseImage2.jpeg';
-import image3 from '../../../../assets/img/landing/resourseImage3.jpeg';
-import image4 from '../../../../assets/img/landing/resourseImage4.jpeg';
-import image5 from '../../../../assets/img/landing/resourseImage5.jpeg';
-import image6 from '../../../../assets/img/landing/resourseImage6.jpeg';
-import image7 from '../../../../assets/img/landing/resourseImage7.jpeg';
+import image1 from '../../../../assets/img/landing/onee.jpeg';
+import image2 from '../../../../assets/img/landing/two.jpeg';
+import image3 from '../../../../assets/img/landing/three.jpeg';
+import image4 from '../../../../assets/img/landing/fout.jpeg';
+import image5 from '../../../../assets/img/landing/five.jpeg';
+import image6 from '../../../../assets/img/landing/six.jpeg';
+import image7 from '../../../../assets/img/landing/seven.jpeg';
 import {Button} from "@mui/material";
 
 const FreeWorks = () => {

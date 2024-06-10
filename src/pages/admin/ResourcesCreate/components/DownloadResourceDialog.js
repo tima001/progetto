@@ -136,7 +136,8 @@ const StyledBox = styled.div`
 
 const StyledImg = styled.img`
   width: 100%;
-  height: auto;
+  height: 480px;
+  object-fit: cover;
 `;
 
 const StyledButton = styled(Button)`

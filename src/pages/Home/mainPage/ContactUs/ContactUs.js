@@ -5,13 +5,15 @@ import {useIntl} from "react-intl";
 import {Box} from "@mui/system";
 import contactUs from '../../../../assets/img/landing/contactUs.png'
 import {Button} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 const ContactUs = () => {
-    const { formatMessage } = useIntl()
+    const {formatMessage} = useIntl()
+    const navigate = useNavigate()
     return (
         <IntroWrapper id="aboutWineInvesting">
             <FlexBox>
-                <Box sx={{ml:'20px'}}>
+                <Box sx={{ml: '20px'}}>
                     <Typography
                         variant="h1"
                         component="div"
@@ -24,11 +26,11 @@ const ContactUs = () => {
                         }}
                     >
                         <StyledSpan>
-                        {formatMessage({ id: 'Join' })}
+                            {formatMessage({id: 'Join'})}
                             {" "}
                         </StyledSpan>
-                        {formatMessage({ id: 'JoinInfo' })}
-                        
+                        {formatMessage({id: 'JoinInfo'})}
+
                     </Typography>
                     <Typography
                         variant="h1"
@@ -40,17 +42,17 @@ const ContactUs = () => {
                             color: '#FFFFFF',
                         }}
                     >
-                        {formatMessage({ id: 'JoinContent' })}
-                        
+                        {formatMessage({id: 'JoinContent'})}
+
                     </Typography>
                 </Box>
                 <StyledBox>
                     <StyledImg src={contactUs}/>
                 </StyledBox>
             </FlexBox>
-<StyledButton>
-{formatMessage({ id: 'JoinButton' })}
-    </StyledButton>
+            <StyledButton variant="contained" onClick={() => navigate('/login')}>
+                {formatMessage({id: 'JoinButton'})}
+            </StyledButton>
         </IntroWrapper>
     )
 }
@@ -74,7 +76,6 @@ const FlexBox = styled.div`
   width: 100%;
   justify-content: space-between;
   gap: 20px;
-  border: 3px solid #F5F1E8;
   border-radius: 26px;
   padding: 20px 0;
 `
@@ -98,8 +99,6 @@ const StyledButton = styled(Button)`
   width: 100%;
   font-weight: 400;
   font-size: 24px;
-  color: #23854A;
-  border: 3px solid #F5F1E8;
   border-radius: 22px;
   padding: 24px;
   margin-top: 64px;

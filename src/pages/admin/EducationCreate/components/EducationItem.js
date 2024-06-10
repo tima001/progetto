@@ -58,9 +58,13 @@ const NewsItem = ({news, locale, refetch}) => {
 
 
     return (
-        <StyledCard key={news.id} style={{position: 'relative'}}>
-            <FlexBox direction="column" justify="space-between" padding="24px">
-                <FlexBox gap="24px">
+        <StyledCard
+            key={news.id} style={{position: 'relative'}}
+        >
+            <FlexBox style={{cursor: 'pointer'}} gap="24px"
+                     onClick={() => window.open(news.link, '_blank')}
+                     direction="column" justify="space-between" padding="24px">
+                <FlexBox>
                     <img alt="logo" src={iconUrl} width={60} height={60}
                          style={{borderRadius: '50%', objectFit: 'cover', objectPosition: 'center'}}/>
                     <Typography
